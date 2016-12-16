@@ -1,0 +1,86 @@
+<div class="page-background">
+
+    <main class="constrain" role="main">
+        <h1 class="visually-hidden" id="section-title">Account</h1>
+        <div class="content">
+            <nav class="tabs">
+                <ul>
+                    <li>
+                        <a [routerLink]="['/users/sign-in']">Log in</a>
+                    </li>
+                    <li class="selected">
+                        <span>Create an account</span>
+                    </li>
+                </ul>
+            </nav>
+            <div class="tab-content">
+                <form class="new_user" id="new_user" #registerForm="ngForm" (ngSubmit)="onSubmit()">
+                    
+                    <div class="fieldset">
+                        <label class="text-under" for="user_email">Email</label>
+                        <input autofocus="autofocus" class="textfield" type="email" required [(ngModel)]="_registerData.email" name="email" id="user_email">
+                    </div>
+                    <div class="fieldset">
+                        <label class="text-under" for="user_password">Password (minimum 8 letters and numbers)</label>
+                        <input class="textfield" type="password" required [(ngModel)]="_registerData.password"  name="password" id="user_password">
+                    </div>
+                    <div class="fieldset">
+                        <label class="text-under" for="user_password_confirmation">Confirm Password</label>
+                        <input class="textfield" type="password"  required
+                       [(ngModel)]="_registerData.passwordConfirmation" name="passwordConfirmation" id="user_password_confirmation">
+                    </div>
+                    <div class="submit-fieldset">
+                        <button type="submit" [disabled]="!registerForm.form.valid">
+                         Create Account
+                        </button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <div class="recent-features">
+        <div class="grid-container">
+            <div class="grid-s-6 grid-m-3 grid-l-6">
+                <div class="recent-feature super-hero">
+                    <div class="constrain">
+                        <a class="hero-link" href="/articles/your-church-needs-to-hear-you-sing">
+                            <div class="hero-text-outer">
+                                <div class="hero-text-inner">
+                                    <div class="hero-text">
+                                        <h1 style="color: #c6000e">Your Church Needs to Hear You&nbsp;Sing</h1>
+                                        <h2 style="color: #0E0C0D">Preparation for Sunday</h2>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </a>
+                        <img alt="" class="image-container lazyloaded" src="https://cdn.desiringgod.org/website_uploads/images/heroes/super/1160/sidekick_your-church-needs-to-hear-you-sing.jpg?1480953453" data-src="https://cdn.desiringgod.org/website_uploads/images/heroes/super/1160/sidekick_your-church-needs-to-hear-you-sing.jpg?1480953453">
+                    </div>
+                </div>
+
+            </div>
+            <div class="grid-s-6 grid-m-3 grid-l-6">
+                <div class="recent-feature super-hero">
+                    <div class="constrain">
+                        <a class="hero-link" href="/articles/you-are-not-alone">
+                            <div class="hero-text-outer">
+                                <div class="hero-text-inner">
+                                    <div class="hero-text">
+                                        <h1 style="color: #ffffff">You Are Not&nbsp;Alone</h1>
+                                        <h2 style="color: #262729">For Women Fighting Every Man’s&nbsp;Battle</h2>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </a>
+                        <img alt="" class="image-container lazyloaded" src="https://cdn.desiringgod.org/website_uploads/images/heroes/super/1165/sidekick_you-are-not-alone.jpg?1481140946" data-src="https://cdn.desiringgod.org/website_uploads/images/heroes/super/1165/sidekick_you-are-not-alone.jpg?1481140946">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

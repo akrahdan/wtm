@@ -1,0 +1,173 @@
+<main class="container-next-to-sidebar" role="main">
+    <h1 class="visually-hidden" id="section-title">Donate</h1>
+    <nav class="tabs">
+        <ul>
+            <li>
+                <a [routerLink]="['/donations']">
+                    One-Time Donation
+                </a>
+            </li>
+            <li class="selected">
+                <a [routerLink]="['/donations/monthly']">
+                    Monthly Donation
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h2 id="page-title">Monthly Donation</h2>
+        <div class="donation-copy">
+            <p>Thank you for sharing in our ministry</p>
+        </div>
+
+        <form #paymentForm="ngForm" id="payment-form" action="" (ngSubmit)="getToken()">
+
+            <p class="donation-form-error">
+
+            </p>
+
+            <fieldset class="highlight amount">
+                <legend>
+                    Monthly amount
+                    <span class="required">*</span>
+                </legend>
+                <div class="donation-amount">
+                    <span class="large">$</span>
+                    <div class="">
+                        <input [(ngModel)]="_stripeData.amount" class="textfield large" value="" type="text" name="amount" id="transaction_amount">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="name">
+                <legend>
+                    Name
+                    <span class="required">*</span>
+                </legend>
+                <div class="name">
+                    <label class="text-under">
+                        <div class="">
+                            <input class="textfield" autocomplete="off" type="text" id="first_name">
+                        </div>
+                        First Name
+                    </label>
+                    <label class="text-under">
+                        <div class="">
+                            <input class="textfield" autocomplete="off" type="text" id="last_name">
+                        </div>
+                        Last Name
+                    </label>
+                </div>
+            </fieldset>
+
+            <fieldset class="credit-card">
+                <legend>
+                    Credit Card
+                    <span class="payment-errors required">*</span>
+                </legend>
+
+
+
+                <div class="card-details">
+
+                    <label class="text-under">
+                        <div class="">
+                            <input class="textfield" [(ngModel)]="cardNumber" name="card-number" type="text" size="20" data-stripe="number">
+                        </div>
+
+                        Credit Card Number
+                    </label>
+                    <div class="date-selects">
+                        <label class="text-under month-select">
+                            <div class="">
+                                <select [(ngModel)]="expiryMonth" name="expiry-month" autocomplete="off" data-stripe="exp_month">
+                                    <option value="">Month</option>
+                                    <option value="01">01 - Jan</option>
+                                    <option value="02">02 - Feb</option>
+                                    <option value="03">03 - Mar</option>
+                                    <option value="04">04 - Apr</option>
+                                    <option value="05">05 - May</option>
+                                    <option value="06">06 - Jun</option>
+                                    <option value="07">07 - Jul</option>
+                                    <option value="08">08 - Aug</option>
+                                    <option value="09">09 - Sep</option>
+                                    <option value="10">10 - Oct</option>
+                                    <option value="11">11 - Nov</option>
+                                    <option value="12">12 - Dec</option>
+                                </select>
+                            </div>
+                            Expiration
+                            <span class="visually-hidden">Month</span>
+                        </label>
+                        <label class="text-under year-select">
+                            <div class="">
+                                <select [(ngModel)]="expiryYear" name="expiry-year" autocomplete="off" data-stripe="exp_year">
+                                    <option value="">Year</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2026">2026</option>
+                                </select>
+                            </div>
+                            <span class="visually-hidden">Expiration Year</span>
+                        </label>
+
+                        <label class="text-under small security-code">
+                            <div class="">
+                                <input [(ngModel)]="cvc" name="cvc" class="textfield" size="4" type="text" data-stripe="cvc">
+                            </div>
+                            CVC
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+            </fieldset>
+
+            <fieldset class="email-address">
+                <legend>
+                    Email Address
+                    <span class="required">*</span>
+                </legend>
+                <div class="email-details" *ngIf="_tokenService.currentUserData">
+                    <label class="text-under">
+                        <div class="">
+                            <input class="textfield" autocomplete="off" type="text" required [(ngModel)]="_tokenService.currentUserData.email" name="email" id="transaction_customer_email">
+                        </div>
+                    </label>
+                </div>
+                <div class="email-details" *ngIf="!_tokenService.currentUserData">
+                    <label class="text-under">
+                        <div class="">
+                            <input class="textfield" autocomplete="off" type="text" required name="email" id="transaction_customer_email">
+                        </div>
+                    </label>
+                </div>
+            </fieldset>
+
+
+
+
+            <input class="button submit fullwidth large" type="submit" value="Donate" [disabled]="!paymentForm.form.valid">
+
+
+        </form>
+    </div>
+
+</main>
+
+
+

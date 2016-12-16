@@ -1,0 +1,108 @@
+<div class="page-background">
+
+    <main role="main">
+        <div class="grid-container">
+            <div class="grid-full">
+                <div class="grouping-index-navigation -show">
+                    <div *ngIf="current" class="grouping-index-navigation-type">
+                        <select [(ngModel)]="current" class="grouping-index-navigation-type__select">
+                            <option *ngFor="let tag of list" [value]="tag._embedded['wp:term'][1][0].slug">{{ tag._embedded['wp:term'][1][0].name}}</option>
+
+                        </select>
+                    </div>
+                    <a class="grouping-index-navigation__grouping-title" href="/series/with-messages">
+                        <span class="grouping-index-navigation__grouping-title-label">Series</span>
+                        <strong class="grouping-index-navigation__grouping-title-title">
+                            Quest for Joy
+                        </strong>
+                        <div class="svg">
+                            <svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <title>Filter</title>
+                                <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g id="20x20-Export" fill="#333333">
+                                        <g id="Menu" transform="translate(3.000000, 5.000000)">
+                                            <path d="M7,9 L13.44799,9 L13.9490967,9 L13.9490967,10 L13.44799,10 L7,10 L7,11 L4,11 L4,10 L0.552009986,10 L0.0509033203,10 L0.0509033203,9 L0.552009986,9 L4,9 L4,8 L7,8 L7,9 Z M12,5 L13.44799,5 L13.9490967,5 L13.9490967,6 L13.44799,6 L12,6 L12,7 L9,7 L9,6 L0.552009986,6 L0.0509033203,6 L0.0509033203,5 L0.552009986,5 L9,5 L9,4 L12,4 L12,5 Z M5,1 L13.44799,1 L13.9490967,1 L13.9490967,2 L13.44799,2 L5,2 L5,3 L2,3 L2,2 L0.552009986,2 L0.0509033203,2 L0.0509033203,1 L0.552009986,1 L2,1 L2,0 L5,0 L5,1 Z" id="Combined-Shape"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                    </a>
+                    <div class="dropdown-list">
+                        <label class="dropdown-list__button js-open-dropdown" for="sort-toggle">
+                            <span class="dropdown-list__button-side-label">Sort</span>
+                            <span class="dropdown-list__button-text">Oldest</span>
+                        </label>
+                        <input class="dropdown-list__checkbox" id="sort-toggle" type="checkbox">
+                        <nav class="dropdown-list__content">
+                            <ul id="resources-sort">
+                                <li>
+                                    <a class="dropdown-list__link" href="/series/quest-for-joy/messages?sort=newest">Newest</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-list__link selected" href="/series/quest-for-joy/messages">Oldest</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-list__link" href="/series/quest-for-joy/messages?sort=views">Most Viewed</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-list__link" href="/series/quest-for-joy/messages?sort=shares">Most Shared</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <app-series [post]="post" [slug]="current"></app-series>
+        
+
+    </main>
+
+    <div class="recent-features">
+        <div class="grid-container">
+            <div class="grid-s-6 grid-m-3 grid-l-6">
+                <div class="recent-feature super-hero">
+                    <div class="constrain">
+                        <a class="hero-link" href="/articles/if-your-right-hand-causes-you-to-sin">
+                            <div class="hero-text-outer">
+                                <div class="hero-text-inner">
+                                    <div class="hero-text">
+                                        <h1 style="color: #ffffff">If Your Right Hand Causes You to&nbsp;Sin</h1>
+                                        <h2 style="color: #FBD554">Ten Biblical Reflections on Masturbation</h2>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </a>
+                        <img alt="" class="image-container lazyloaded" src="https://cdn.desiringgod.org/website_uploads/images/heroes/super/1159/sidekick_if-your-right-hand-causes-you-to-sin.jpg?1480953128" data-src="https://cdn.desiringgod.org/website_uploads/images/heroes/super/1159/sidekick_if-your-right-hand-causes-you-to-sin.jpg?1480953128">
+                    </div>
+                </div>
+
+            </div>
+            <div class="grid-s-6 grid-m-3 grid-l-6">
+                <div class="recent-feature super-hero">
+                    <div class="constrain">
+                        <a class="hero-link" href="/messages/calvinists-believe-every-verse">
+                            <div class="hero-text-outer">
+                                <div class="hero-text-inner">
+                                    <div class="hero-text">
+                                        <h1 style="color: #3a3c3f">Calvinists Believe Every&nbsp;Verse</h1>
+                                        <h2 style="color: #c6000e">25-Minute Message</h2>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </a>
+                        <img alt="" class="image-container lazyloaded" src="https://cdn.desiringgod.org/website_uploads/images/heroes/super/1158/sidekick_calvinists-believe-every-verse.jpg?1480710572" data-src="https://cdn.desiringgod.org/website_uploads/images/heroes/super/1158/sidekick_calvinists-believe-every-verse.jpg?1480710572">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
