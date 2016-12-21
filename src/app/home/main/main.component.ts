@@ -30,7 +30,7 @@ export class MainComponent implements OnInit {
 
     let urlparams = new URLSearchParams('per_page=12&_embed');
 
-    let heroparams = new URLSearchParams('filter[category_name]=hero&_embed');
+    let heroparams = new URLSearchParams('categories=77&_embed');
     let heroptions:RequestOptionsArgs = {
         url: null,
         method: null,

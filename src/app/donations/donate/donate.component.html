@@ -27,7 +27,7 @@
                 Every gift you give to White Throne Ministries will be put to maximum use with the highest financial standards of integrity.
             </p>
 
-            <p *ngIf="_alertService.output">{{_alertService.output}}</p>
+           
 
 
 
@@ -39,7 +39,8 @@
             <section class="sidebar-module account" *ngIf="_tokenService.currentUserData">
                 <h2 class="module-title">account</h2>
                 <a class="button" [routerLink]="['/account']">View Account</a>
-                <a class="button" [routerLink]="['/users/log-out']">Log Out</a>
+                <app-log-out></app-log-out>
+               
             </section>
             <section class="sidebar-module account" *ngIf="!_tokenService.currentUserData">
                 <h2 class="module-title">account</h2>

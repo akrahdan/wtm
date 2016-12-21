@@ -34,6 +34,14 @@ import { DonateMonthlyComponent } from './donations/donate-monthly/donate-monthl
 import { EngageComponent } from './engage/engage.component';
 import { AlertMessageComponent } from './shared/alert-message/alert-message.component';
 import { AlertService } from './services/alert/alert.service';
+import { ChangePasswordComponent } from './users/change-password/change-password.component';
+import { NewPasswordComponent } from './users/new-password/new-password.component';
+import { LogOutComponent } from './users/log-out/log-out.component';
+import { AccountComponent } from './users/account/account.component';
+import { HistoryComponent } from './users/account/history/history.component';
+import { HistoryMonthlyComponent } from './users/account/history-monthly/history-monthly.component';
+import { EditAccountComponent } from './users/account/edit-account/edit-account.component';
+import { LoginGuardService } from './users/account/login-guard.service';
 
 @NgModule({
   declarations: [
@@ -62,7 +70,14 @@ import { AlertService } from './services/alert/alert.service';
     DonateOnceComponent,
     DonateMonthlyComponent,
     EngageComponent,
-    AlertMessageComponent
+    AlertMessageComponent,
+    ChangePasswordComponent,
+    NewPasswordComponent,
+    LogOutComponent,
+    AccountComponent,
+    HistoryComponent,
+    HistoryMonthlyComponent,
+    EditAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +90,7 @@ import { AlertService } from './services/alert/alert.service';
       namespace: '/wp/v2' // (optional, default: '/wp/v2')
     })
   ],
-  providers: [ Angular2TokenService, CustomeStripeService, AlertService ],
+  providers: [ Angular2TokenService, CustomeStripeService, AlertService, LoginGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

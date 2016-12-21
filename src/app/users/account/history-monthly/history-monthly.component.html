@@ -1,0 +1,21 @@
+<nav class="tabs">
+  <ul>
+    <li class="">
+      <a [routerLink]="['/account']">Donation History</a>
+    </li>
+    <li class="selected">
+      <a [routerLink]="['/account/subscriptions']">Monthly Donations</a>
+    </li>
+    <li class="">
+      <a [routerLink]="['/account/edit']">Account Settings</a>
+    </li>
+  </ul>
+</nav>
+<div class="tab-content">
+  <h2 id="page-title">Monthly Donation</h2>
+  <p>You do not have a monthly donation set up. Please visit <a href="/donate">desiringGod.org/donate</a> if you would like
+    to begin giving monthly.</p>
+  <div class="order-links">
+    <app-log-out></app-log-out>
+  </div>
+</div>

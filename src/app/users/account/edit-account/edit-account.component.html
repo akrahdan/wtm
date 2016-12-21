@@ -1,0 +1,53 @@
+
+<nav class="tabs">
+    <ul>
+        <li class="">
+            <a [routerLink]="['/account']">Donation History</a>
+        </li>
+        <li class="">
+            <a [routerLink]="['/account/subscriptions']">Monthly Donations</a>
+        </li>
+        <li class="selected">
+            <a [routerLink]="['/account/edit']">Account Settings</a>
+        </li>
+    </ul>
+</nav>
+<div class="tab-content">
+    <h2 id="page-title">Account Settings</h2>
+    <form class="edit_user" id="edit_user" #changePasswordForm="ngForm" (ngSubmit)="onSubmit()">
+
+        <fieldset *ngIf="_tokenService.currentUserData">
+            <legend>Email Address</legend>
+            <input autofocus="autofocus" class="textfield" type="email" required [(ngModel)]="_tokenService.currentUserData.email" name="email" id="user_email">
+        </fieldset>
+        <fieldset>
+            <legend>Change Password</legend>
+            <label class="text-under">
+                <input autocomplete="off" class="textfield" type="password" name="password" id="user_password" required
+                               [(ngModel)]="_updatePasswordData.password">
+                New password (minimum 8 letters and numbers)
+            </label>
+            <label class="text-under">
+                <input class="textfield" type="password" name="password_confirmation" id="user_password_confirmation" required
+                               [(ngModel)]="_updatePasswordData.passwordConfirmation">
+                Confirm new password
+            </label>
+        </fieldset>
+        <fieldset class="submit">
+            <legend>
+                Current Password
+                <span class="required">*</span>
+            </legend>
+            <label class="text-under">
+                <input class="textfield" type="password" name="current_password" id="user_current_password" required  [(ngModel)]="_updatePasswordData.passwordCurrent">
+                We need your current password to confirm your changes.
+            </label>
+        </fieldset>
+        <div class="order-links">
+            <input type="submit" name="commit" value="Save Changes" class="button" [disabled]="!changePasswordForm.form.valid">
+            <a class="button" href="https://www.desiringgod.org/account/donations">Cancel</a>
+            <app-log-out></app-log-out>
+            <a data-confirm="Are you sure?" class="button pull-right" rel="nofollow" data-method="delete" href="/users">Delete My Account</a>
+        </div>
+    </form>
+</div>
