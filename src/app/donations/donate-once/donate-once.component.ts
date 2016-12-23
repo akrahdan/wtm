@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomeStripeService, StripeData } from '../../services/stripeService/custome-stripe.service';
+import { FormGroup } from '@angular/forms';
+import { CustomeStripeService, StripeData, Card } from '../../services/stripeService/custome-stripe.service';
 import { Angular2TokenService, RegisterData } from 'angular2-token';
 @Component({
   selector: 'app-donate-once',
@@ -13,11 +14,7 @@ export class DonateOnceComponent implements OnInit {
 
   private _stripeData: StripeData = <StripeData>{}
 
-
-  cardNumber: string;
-  expiryMonth: string;
-  expiryYear: string;
-  cvc: string;
+  private _card: Card = <Card>{}
 
   body: any;
   message: any;
@@ -28,7 +25,7 @@ export class DonateOnceComponent implements OnInit {
      this._stripeService.init({
       apiPath: 'http://localhost:3000',
       signInPath: 'auth/sign_in',
-      stripeChargePath: 'users/charge',
+      stripeChargePath: 'charge',
 
       validateTokenPath: 'auth/validate_token',
 
@@ -46,20 +43,29 @@ export class DonateOnceComponent implements OnInit {
   }
 
 
-  getToken() {
+  getToken(form:FormGroup, event) {
     this.message = 'Loading...';
+     
+     event.preventDefault();
 
     (<any>window).Stripe.card.createToken({
-      number: this.cardNumber,
-      exp_month: this.expiryMonth,
-      exp_year: this.expiryYear,
-      cvc: this.cvc
+      number: this._card.cardNumber,
+      exp_month: this._card.expiryMonth,
+      exp_year: this._card.expiryYear,
+      cvc: this._card.cvc
     }, (status: number, response: any) => {
 
       // Wrapping inside the Angular zone
 
       if (status === 200) {
+        console.log(response);
         this._stripeData.token = response.id;
+        this._stripeData.amount = this._card.amount *100;
+        this._stripeData.card_brand = response.card.brand;
+        this._stripeData.card_exp_month = response.card.exp_month;
+        this._stripeData.card_exp_year = response.card.exp_year;
+        this._stripeData.card_last4 = response.card.last4;
+       
 
         this._output = null;
 
@@ -82,7 +88,7 @@ export class DonateOnceComponent implements OnInit {
         this.message = response.error.message;
         console.log(this.message)
       }
-
+      form.reset();
     });
   }
 

@@ -27,7 +27,7 @@ export class AppComponent implements AfterContentInit {
 
       updatePasswordPath: 'auth',
       resetPasswordPath: 'auth/password',
-      resetPasswordCallback: window.location.href,
+      resetPasswordCallback: 'http://localhost:4200/users/password/edit',
 
       oAuthPaths: {
         github: 'auth/github'

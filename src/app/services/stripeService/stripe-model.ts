@@ -23,9 +23,22 @@ export interface UserType {
     path: string;
 }
 
+export interface Card {
+    cardNumber: string;
+    expiryMonth: string;
+    expiryYear: string;
+    cvc: string;
+    amount: number
+}
+
 export interface StripeData {
     amount: number;
     token: string;
+    card_brand: string,
+    card_last4: string,
+    card_exp_month: string,
+    card_exp_year: string
+
 }
 
 
@@ -40,7 +53,7 @@ export interface StripeTokenOptions {
     stripeChargePath?: string;
     signInRedirect?: string;
     signInStoredUrlStorageKey?: string;
-    signOutFailedValidate?:     boolean;
+    signOutFailedValidate?: boolean;
 
     signOutPath?: string;
     validateTokenPath?: string;

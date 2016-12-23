@@ -21,10 +21,10 @@
 
         </div>
 
-        <form #paymentForm="ngForm" id="payment-form" action=""  (ngSubmit)="getToken()">
+        <form #paymentForm="ngForm"  id="payment-form" novalidate (ngSubmit)="getToken(paymentForm, $event)">
 
-            <p class="donation-form-error">
-
+            <p *ngIf="paymentForm.invalid" class="donation-form-error">
+                Please double check your credit card details and try again.
             </p>
             <fieldset class="highlight amount">
                 <legend>
@@ -34,8 +34,9 @@
                 <div class="donation-amount">
                     <span class="large">$</span>
                     <div class="">
-                        <input [(ngModel)]="_stripeData.amount" class="textfield large" value="" type="text" name="amount" id="transaction_amount">
+                        <input [(ngModel)]="_card.amount" class="textfield large"  type="text" name="amount"  #amount="ngModel" id="transaction_amount" required>
                     </div>
+                    <div *ngIf="amount.errors?.required && amount.touched" class="donation-form-error">Please enter the amount you would donate</div>
                 </div>
             </fieldset>
 
@@ -72,7 +73,7 @@
 
                     <label class="text-under">
                         <div class="">
-                            <input class="textfield" [(ngModel)]="cardNumber" name="card-number" type="text" size="20" data-stripe="number">
+                            <input class="textfield" [(ngModel)]="_card.cardNumber" name="card-number" type="text" size="20" data-stripe="number">
                         </div>
 
                         Credit Card Number
@@ -80,7 +81,7 @@
                     <div class="date-selects">
                         <label class="text-under month-select">
                             <div class="">
-                                <select [(ngModel)]="expiryMonth" name="expiry-month" autocomplete="off" data-stripe="exp_month">
+                                <select [(ngModel)]="_card.expiryMonth" name="expiry-month" autocomplete="off" data-stripe="exp_month">
                                     <option value="">Month</option>
                                     <option value="01">01 - Jan</option>
                                     <option value="02">02 - Feb</option>
@@ -101,7 +102,7 @@
                         </label>
                         <label class="text-under year-select">
                             <div class="">
-                                <select [(ngModel)]="expiryYear" name="expiry-year" autocomplete="off" data-stripe="exp_year">
+                                <select [(ngModel)]="_card.expiryYear" name="expiry-year" autocomplete="off" data-stripe="exp_year">
                                     <option value="">Year</option>
                                     <option value="2016">2016</option>
                                     <option value="2017">2017</option>
@@ -121,7 +122,7 @@
 
                         <label class="text-under small security-code">
                             <div class="">
-                                <input [(ngModel)]="cvc" name="cvc" class="textfield" size="4" type="text" data-stripe="cvc">
+                                <input [(ngModel)]="_card.cvc" name="cvc" class="textfield" size="4" type="text" data-stripe="cvc">
                             </div>
                             CVC
                         </label>
@@ -157,12 +158,12 @@
                 </div>
             </fieldset>
 
+            
 
 
+            <input class="button submit fullwidth large" type="submit" value="Donate" [disabled]="paymentForm.invalid">
 
-            <input class="button submit fullwidth large" type="submit" value="Donate" [disabled]="!paymentForm.form.valid">
-
-
+             
         </form>
     </div>
 

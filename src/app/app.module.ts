@@ -42,6 +42,7 @@ import { HistoryComponent } from './users/account/history/history.component';
 import { HistoryMonthlyComponent } from './users/account/history-monthly/history-monthly.component';
 import { EditAccountComponent } from './users/account/edit-account/edit-account.component';
 import { LoginGuardService } from './users/account/login-guard.service';
+import { FeatureInsightComponent } from './home/feature-insight/feature-insight.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { LoginGuardService } from './users/account/login-guard.service';
     AccountComponent,
     HistoryComponent,
     HistoryMonthlyComponent,
-    EditAccountComponent
+    EditAccountComponent,
+    FeatureInsightComponent
   ],
   imports: [
     BrowserModule,

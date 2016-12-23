@@ -21,6 +21,7 @@ import 'rxjs/add/operator/filter';
 import {
   UserData,
   AuthData,
+  Card,
   StripeData,
   UserType,
   StripeTokenOptions
@@ -49,7 +50,11 @@ export class CustomeStripeService {
   submitPayments(stripeData: StripeData): Observable<Response> {
       let body = JSON.stringify({
          token : stripeData.token,
-         amount: stripeData.amount
+         amount: stripeData.amount,
+         card_brand: stripeData.card_brand,
+         card_last4: stripeData.card_last4,
+         card_exp_month: stripeData.card_exp_month,
+         card_exp_year: stripeData.card_exp_year
       })
 
   return  this.post(this._constructUserPath() + this._options.stripeChargePath, body);
