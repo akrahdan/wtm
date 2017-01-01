@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { WpApiPosts, WpApiTerms } from '../../../services/wp-api-angular';
+import { WpApiPosts } from '../../../services/wp-api-angular';
 import { URLSearchParams, RequestOptionsArgs, Headers } from '@angular/http';
 
 @Component({
@@ -14,7 +14,7 @@ export class SeriesComponent implements  OnChanges {
   constructor(private wpApiPosts: WpApiPosts) { }
 
   fetchPost() {
-    let urlparams = new URLSearchParams('filter[tag]=' + this.slug + '&_embed');
+    let urlparams = new URLSearchParams('tags=' + this.slug + '&_embed');
        let options:RequestOptionsArgs = {
         url: null,
         method: null,

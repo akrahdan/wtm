@@ -6,9 +6,10 @@ import { Observable } from 'rxjs/Observable';
 import { RequestOptionsArgs } from '@angular/http/src/interfaces';
 import { Response } from '@angular/http/src/static_response';
 
-import { WpApiParent } from './Parent';
+import { WpApiParent, WpApiAppConfig } from './Parent';
 
 export interface IWpApiTerms {
+  initApi(config?: WpApiAppConfig);
   getList(taxonomiesType: string, options?: RequestOptionsArgs): Observable<Response>;
   get(taxonomiesType: string, termId: number, options?: RequestOptionsArgs): Observable<Response>;
   create(taxonomiesType: string, body: any, options?: RequestOptionsArgs): Observable<Response>;
@@ -20,6 +21,9 @@ const defaultTaxoType = 'categories';
 
 @Injectable()
 export class WpApiTerms extends WpApiParent implements IWpApiTerms {
+  initApi(config?: WpApiAppConfig){
+    return this.init(config);
+  }
   getList(taxonomiesType = defaultTaxoType , options = {}) {
     return this.httpGet(`/${taxonomiesType}`, options)
   }

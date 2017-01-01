@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-
+import { WpApiAppConfig } from './wp-api-angular'
+ 
 // Need to import interfaces dependencies
 // Bug TypeScript https://github.com/Microsoft/TypeScript/issues/5938
 import { Observable } from 'rxjs/Observable';
@@ -9,6 +10,7 @@ import { Response } from '@angular/http/src/static_response';
 import { WpApiParent } from './Parent';
 
 export interface IWpApiPosts {
+  initApi(config?: WpApiAppConfig);
   getList(options?: RequestOptionsArgs): Observable<Response>;
   get(postId: number, options?: RequestOptionsArgs): Observable<Response>;
   create(body: any, options?: RequestOptionsArgs): Observable<Response>;
@@ -26,6 +28,10 @@ export interface IWpApiPosts {
 
 @Injectable()
 export class WpApiPosts extends WpApiParent implements IWpApiPosts {
+
+  initApi(config?: WpApiAppConfig){
+    return this.init(config);
+  }
   getList(options = {}) {
     return this.httpGet(`/posts`, options)
   }

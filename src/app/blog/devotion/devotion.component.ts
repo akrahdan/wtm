@@ -21,9 +21,9 @@ export class DevotionComponent implements OnInit {
       'Access-Control-Allow-Headers': 'Access-Control-Request-Method, Access-Control-Request-Headers'
     });
 
-    let urlparams = new URLSearchParams('filter[category_name]=devotions&_embed');
+    let urlparams = new URLSearchParams('categories=61&_embed');
 
-    let heroparams = new URLSearchParams('filter[category_name]=devotionhero&_embed');
+    let heroparams = new URLSearchParams('categories=87&_embed');
     let heroptions:RequestOptionsArgs = {
         url: null,
         method: null,

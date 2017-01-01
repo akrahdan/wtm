@@ -2,6 +2,7 @@ import { Component, OnInit , OnChanges, OnDestroy} from '@angular/core';
 
 import { URLSearchParams, RequestOptionsArgs, Headers } from '@angular/http';
 
+
 import 'rxjs/add/operator/toPromise';
 import { WpApiPosts } from '../../services/wp-api-angular';
 

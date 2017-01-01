@@ -2,8 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { MaterialModule } from '@angular/material';
 import { WtmRoutingModule } from './app-routing.module';
-import { WpApiModule } from './services/wp-api-angular';
+import { WpApiPosts } from './services/wp-api-angular';
+import { WpApiTerms } from './services/wp-api-angular';
 
 import { AppComponent } from './app.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
@@ -43,6 +45,15 @@ import { HistoryMonthlyComponent } from './users/account/history-monthly/history
 import { EditAccountComponent } from './users/account/edit-account/edit-account.component';
 import { LoginGuardService } from './users/account/login-guard.service';
 import { FeatureInsightComponent } from './home/feature-insight/feature-insight.component';
+import 'hammerjs';
+import { HeaderComponent } from './home/header/header.component';
+import { SearchComponent } from './home/search/search.component';
+import { InsightWidgetComponent } from './home/insight-widget/insight-widget.component';
+import { FilterComponent } from './home/filter/filter.component';
+import { ClientService } from './services/client/client.service';
+import { TimeService } from './services/time/time.service';
+
+
 
 @NgModule({
   declarations: [
@@ -79,7 +90,11 @@ import { FeatureInsightComponent } from './home/feature-insight/feature-insight.
     HistoryComponent,
     HistoryMonthlyComponent,
     EditAccountComponent,
-    FeatureInsightComponent
+    FeatureInsightComponent,
+    HeaderComponent,
+    SearchComponent,
+    InsightWidgetComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,
@@ -87,12 +102,10 @@ import { FeatureInsightComponent } from './home/feature-insight/feature-insight.
     HttpModule,
     WtmRoutingModule,
     A2tUiModule,
-    WpApiModule.initializeApp({
-      baseUrl: "https://whitethroneministries.com/wp-json/",
-      namespace: '/wp/v2' // (optional, default: '/wp/v2')
-    })
+    MaterialModule.forRoot()
   ],
-  providers: [ Angular2TokenService, CustomeStripeService, AlertService, LoginGuardService],
+  providers: [WpApiPosts,WpApiTerms, Angular2TokenService, CustomeStripeService, AlertService, LoginGuardService, ClientService,
+  TimeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

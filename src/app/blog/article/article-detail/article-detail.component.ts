@@ -19,7 +19,7 @@ export class ArticleDetailComponent implements OnInit {
     this.sub = this.route.params.subscribe(params =>{
        let slug = params['slug'];
 
-       let urlparams = new URLSearchParams('filter[name]=' + slug + '&_embed');
+       let urlparams = new URLSearchParams('slug=' + slug + '&_embed');
        let options:RequestOptionsArgs = {
         url: null,
         method: null,

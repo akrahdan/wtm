@@ -1,6 +1,8 @@
 import { Component, AfterContentInit } from '@angular/core';
 import { AlertService } from './services/alert/alert.service';
+import { WpApiPosts, WpApiAppConfig, WpApiTerms }  from './services/wp-api-angular';
 import { Angular2TokenService } from 'angular2-token';
+
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,7 @@ import { Angular2TokenService } from 'angular2-token';
 })
 export class AppComponent implements AfterContentInit {
   private 
-  constructor(private _alertService: AlertService, private _tokenService: Angular2TokenService) { 
+  constructor(private _alertService: AlertService, private _tokenService: Angular2TokenService, private _apipost:WpApiPosts, private _tags:WpApiTerms) { 
     this._tokenService.init({
       apiPath: 'http://localhost:3000',
 
@@ -44,6 +46,9 @@ export class AppComponent implements AfterContentInit {
         }
       }
     });
+
+    this._apipost.initApi();
+    this._tags.initApi();
   }
 
   ngAfterContentInit() {

@@ -4,7 +4,7 @@ import { URLSearchParams, RequestOptionsArgs, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { WpApiPosts } from '../../services/wp-api-angular';
 
-let config = require('../../services/config.json')
+
 
 @Component({
   selector: 'app-article',
@@ -24,10 +24,10 @@ export class ArticleComponent implements OnInit {
       'Access-Control-Allow-Headers': 'Access-Control-Request-Method, Access-Control-Request-Headers'
     });
 
-    let urlparams = new URLSearchParams('filter[category_name]=articles&_embed');
+    let urlparams = new URLSearchParams('categories=62&_embed');
     let restparams = new URLSearchParams('per_page=16&_embed');
 
-    let heroparams = new URLSearchParams('filter[category_name]=articlehero&_embed');
+    let heroparams = new URLSearchParams('categories=86&_embed');
     let heroptions:RequestOptionsArgs = {
         url: null,
         method: null,

@@ -1,0 +1,27 @@
+<div class="page-background">
+    <div class="hero hero-full-canvas show" style="height: 400px;" *ngFor="let hero of heroe">
+        <div class="constrain">
+            <a class="hero-link" [routerLink]="['/', hero._embedded['wp:term'][0][0].slug, hero.slug]" [innerHtml]="hero.title.rendered"></a>
+        </div>
+        <picture>
+            <!--[if IE 9]><video style="display: none;"><![endif]-->
+            <source media="(min-width: 1500px)" srcset="{{hero.better_featured_image.source_url}}">
+            <source media="(min-width: 771px) and (max-width: 1500px)" srcset="{{hero.better_featured_image.source_url}}">
+            <source media="(min-width: 671px) and (max-width: 770px), (min-height: 700px)" srcset="{{hero.better_featured_image.source_url}}">
+            <source media="(max-width: 321px) and (max-height: 601px)" srcset="{{hero.better_featured_image.source_url}}">
+            <source media="(min-width: 322px) and (max-width: 670px), (max-height: 700px)" srcset="{{hero.better_featured_image.source_url}}">
+            <!--[if IE 9]></video><![endif]-->
+            <img alt="Hero Image">
+        </picture>
+        <div class="hero-text-outer">
+            <div class="hero-text-inner">
+                <div class="hero-text">
+                    <h1 style="color: #240301" [innerHtml]="hero.title.rendered"></h1>
+                    <h2 style="color: #A76B71" [innerHtml]="hero.wps_subtitle"></h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+     

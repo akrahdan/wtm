@@ -1,3 +1,24 @@
-<p>
-  feature-insight works!
-</p>
+
+  <div class="generic-container-wrapper ng-scope" id="featured-stories-container">
+    <!-- ngIf: ctrl.featuredData.length -->
+    <div class="generic-container ng-scope">
+      <div class="generic-header-container generic-separator">
+        <div class="generic-title featured-stories-header opacity-anim layout-row" layout="row">
+          Featured insights
+        </div>
+      </div>
+
+      <div class="featured-stories carousel ng-isolate-scope layout-row is-touch" tracking-name="Featured Stories" layout="row">
+        <!-- ngIf: currentItemOffset > 0 -->
+
+        <div class="carousel-wrapper">
+
+        </div>
+
+        <button class="carousel-next ng-scope ng-isolate-scope" aria-label="Next" aria-hidden="false">
+               
+            </button>
+      </div>
+    </div>
+    <!-- end ngIf: ctrl.featuredData.length -->
+  </div>
