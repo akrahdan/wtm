@@ -1,0 +1,7 @@
+div.article-container a.article{
+    margin: 0 !important;
+}
+
+[hidden] {
+    display: none !important;
+}

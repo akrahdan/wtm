@@ -56,7 +56,10 @@
 
             </div>
         </div>
-        <app-series [post]="post" [slug]="current"></app-series>
+        <div *ngIf="current">
+          <app-series [post]="post" [slug]="current"></app-series>
+        </div>
+        
         
 
     </main>

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { PostListComponent } from './posts/post-list/post-list.component';
 import { ArticleComponent } from './blog/article/article.component';
 import { DevotionComponent } from './blog/devotion/devotion.component';
+import { HealthComponent } from './blog/health/health.component';
 import { InsightsComponent } from './blog/insights/insights.component';
 import { MainComponent } from './home/main/main.component';
 import { BooksComponent } from './products/books/books.component';
@@ -40,8 +41,8 @@ const routes: Routes = [
   },
 
   {
-    path: 'products/books',
-    component: BooksComponent
+    path: 'health',
+    component: HealthComponent
 
   },
 

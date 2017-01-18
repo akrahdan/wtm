@@ -1,0 +1,81 @@
+<md-sidenav-container>
+    
+</md-sidenav-container>
+<md-sidenav class="fe-sidenav-left" #sidenav opened="false">
+    <div class="fe-sidenav-header layout-align-start-center layout-row" layout="row" layout-align="start center">
+        <a (click)="sidenav.toggle()" class="menu-btn">
+            <div class="sidenav-container">
+                <md-icon svgIcon="menu-icon">
+
+                </md-icon>
+            </div>
+        </a>
+        <div class="logo-container menu-logo" dir="ltr">
+            <md-icon class="google-logo sidenav-logo">
+            </md-icon>
+        </div>
+    </div>
+    <md-list class="fe-sidenav-list-wrapper">
+        <div class="fe-sidenav-list-group" id="sidenav-list-group-trends">
+
+            <md-list-item>
+                <button md-button class="fe-sidenav-menu-item" href="/" (click)="homeClickHandler();toggleSidenav('Close')">
+                        Home
+
+                    </button>
+            </md-list-item>
+
+
+            <md-list-item>
+                <button md-button class="fe-sidenav-menu-item" href="/explore">
+                        Explore
+
+                    </button>
+            </md-list-item>
+
+
+            <md-list-item>
+                <button md-button class="fe-sidenav-menu-item" href="/hottrends">
+                        Trending Searches
+                    </button>
+            </md-list-item>
+
+
+        </div>
+        <div class="fe-sidenav-list-group" id="sidenav-list-group-partners">
+            <md-list-item> <button md-button class="fe-sidenav-menu-item">            Google Correlate          </button> </md-list-item>
+        </div>
+        <div class="fe-sidenav-list-group" id="sidenav-list-group-terms">
+
+            <md-list-item>
+                <button md-button class="fe-sidenav-menu-item" href="/" (click)="homeClickHandler();toggleSidenav('Close')">
+                        Home
+
+                    </button>
+            </md-list-item>
+
+
+            <md-list-item>
+                <button md-button class="fe-sidenav-menu-item" href="/explore">
+                        Explore
+
+                    </button>
+            </md-list-item>
+
+
+            <md-list-item>
+                <button md-button class="fe-sidenav-menu-item" href="/hottrends">
+                        Trending Searches
+                    </button>
+            </md-list-item>
+
+
+        </div>
+    </md-list>
+    <div class="fe-sidenav-footer">
+        <button>
+                <span>Sign In</span>
+                <span> </span>
+            </button>
+    </div>
+</md-sidenav>

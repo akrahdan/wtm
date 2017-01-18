@@ -1,0 +1,7 @@
+div.card__author > span {
+    float: right
+}
+
+[hidden] {
+    display: none !important;
+}

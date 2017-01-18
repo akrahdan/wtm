@@ -3,6 +3,9 @@ import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular
 import * as _ from "lodash";
 import { ClientService } from '../../services/client/client.service';
 import { TimeService } from '../../services/time/time.service';
+import { SidenavService } from '../../services/sidenav/sidenav.service';
+import { SeriesService } from '../../services/series/series.service';
+import { ContentService } from '../../services/content/content.service';
 
 @Component({
   selector: 'app-header',
@@ -81,7 +84,7 @@ export class HeaderComponent implements OnInit {
   @ViewChild("topbar") topbar
   @ViewChild("header") header
 
-  constructor(private client: ClientService, private elRef: ElementRef, private _time: TimeService) {
+  constructor(private client: ClientService, private elRef: ElementRef, private _time: TimeService, private _sidenav:SidenavService, private _loader: SeriesService, private content: ContentService) {
     this.imageLoaded = !1;
     this.showShadow = !1;
     this.hideHeaderContent = !1;

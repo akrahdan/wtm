@@ -1,0 +1,67 @@
+<div class="widget-container-wrapper layout-wrap layout-row">
+    <div flex="100" class="widget-container ng-scope flex-100">
+        <div class="widget-template">
+            <div class="fe-top-news fe-atoms-generic-container">
+
+
+                <div class="fe-atoms-generic-content-container">
+
+                    <button [hidden]="!mouseIn" class="carousel-prev" aria-label="Prev" tabindex="-1" (click)="navigate(-1)" *ngIf="currentItemOffset > 0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                            <path d="M0 0h24v24H0z" fill="none" />
+                        </svg>
+                    </button>
+                    <div #carousel class="carousel-wrapper">
+                        <app-loader *ngIf="_series.isLoading"></app-loader>
+                        <div #itemlist class="carousel-items" [ngStyle]="{ 'transform' : 'translate(' + xTransform + 'px, 0px)' , '-webkit-transform' : 'translate(' + xTransform + 'px, 0px)' }">
+                            <div *ngFor="let study of post"  class="article-container ng-scope">
+                                <a class="article article-item" [routerLink]="['/health', slug, study.slug]" target="_blank">
+                                    <div class="article-content">
+                                        <div class="article-title ng-isolate-scope" title="Contrary to Trump&amp;#39;s belief, 74% want to see his tax returns: poll"
+                                             dir="ltr">
+                                            <span ng-bind="bidiText" class="ng-binding" [innerHtml]="study.title.rendered"></span>
+                                        </div>
+                                        <div class="article-source-time fe-atoms-generic-hide-in-mobile">
+                                            <div class="article-source ng-isolate-scope" dir="ltr">
+                                                <span ng-bind="bidiText" class="ng-binding"></span>
+                                            </div>
+                                            <div class="article-time ng-binding">{{study.date | date }}</div>
+                                        </div>
+                                        <div class="article-source-time fe-atoms-generic-hide-in-desktop">
+                                            <div bidi="item.value.source" class="ng-isolate-scope" dir="ltr">
+                                                <span class="ng-binding"></span>
+                                            </div>
+                                            <div class="ng-binding">{{study.date | date }}</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="article-media">
+
+                                        <div class="article-image-source ng-scope ng-isolate-scope" dir="ltr">
+                                            <span class="ng-binding"></span>
+                                        </div>
+                                        <img class="article-image ng-scope" [alt]="study.title.rendered" [src]="study.better_featured_image.source_url">
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <button [hidden]="!mouseIn" class="carousel-next" aria-label="Next" tabindex="-1" (click)="navigate(1)" *ngIf="currentItemOffset < itemsCount - 1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                            <path d="M0 0h24v24H0z" fill="none" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

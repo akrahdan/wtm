@@ -418,24 +418,26 @@
     background-color: #fafafa!important
 }
 
-.carousel-prev ng-include,.carousel-next ng-include {
+.carousel-prev,.carousel-next {
     height: 100%;
     margin: 0 auto
 }
 
-.carousel-prev ng-include svg,.carousel-next ng-include svg {
-    opacity: .54
+.carousel-prev svg,.carousel-next svg {
+    opacity: .54;
+    display: block;
+    margin: auto;
 }
 
 .carousel-prev::-moz-focus-inner,.carousel-next::-moz-focus-inner {
     border: 0
 }
 
-.carousel-prev>ng-include,.carousel-next>ng-include {
+.carousel-prev,.carousel-next {
     color: #000;
     display: block;
-    height: 24px;
-    width: 24px
+    height: 40px;
+    width: 40px
 }
 
 .carousel-prev {
@@ -1339,11 +1341,11 @@ sparkline svg {
     }
 }
 
-widget {
+div.widget {
     display: block
 }
 
-widget[template="fe_featured"] {
+div.fe_featured {
     width: 384px
 }
 
@@ -30064,7 +30066,7 @@ md-backdrop.md-opaque.md-default-theme {
     height: 64px;
     left: 0;
     padding: 8px 12px;
-    position: fixed;
+    position: fixed !important;
     right: 0;
     top: 0;
     z-index: 50;
@@ -30195,7 +30197,7 @@ md-backdrop.md-opaque.md-default-theme {
 }
 
 .logo-container .sidenav-logo {
-    background-image: url("https://www.gstatic.com/images/branding/lockups/1x/lockup_trends_color_142x24dp.png")
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/wtministry-766b6.appspot.com/o/menu-logo.png?alt=media&token=694230f6-2428-4058-870e-b86a4cea9609")
 }
 
 @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
@@ -30334,7 +30336,7 @@ md-progress-circular.floating {
     height: 100%;
     left: 0;
     right: 0;
-    z-index: 2
+    
 }
 
 .loader-desktop.full-page {
@@ -31989,16 +31991,6 @@ md-bottom-sheet.md-subheader {
 
 .featured-story:last-child:after {
     right: -1px
-}
-
-.featured-story:hover,.featured-story:focus {
-    background-color: #fafafa;
-    border-radius: 2px
-}
-
-.featured-story:hover .fe-atoms-generic-container,.featured-story:focus .fe-atoms-generic-container,.featured-story:hover .fe-featured-atoms-generic-container,.featured-story:focus .fe-featured-atoms-generic-container {
-    background-color: #fafafa;
-    border-radius: 2px
 }
 
 .featured-story .fe-featured-atoms-generic-container {
@@ -36239,4 +36231,18 @@ html[dir="rtl"] .md-calendar-date:first-child,html[dir="rtl"] .md-calendar-day-h
 
 .charts-tooltip,.goog-tooltip {
     z-index: 101
+}
+
+.selectors-wrapper md-select div.md-select-trigger {
+    border-bottom-color: rgba(255,255,255,0.4)!important
+}
+
+.selectors-wrapper md-select span.md-select-value{
+    color: #fff !important
+}
+
+.app-spinner {
+  height: 30px;
+  width: 30px;
+  display: inline-block;
 }

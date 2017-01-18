@@ -1,3 +1,23 @@
-<p>
-  filter works!
-</p>
+
+<div class="selectors-wrapper">
+   
+    <button md-button class="md-icon-button md-no-ink filter-menu-button" id="homepage-filters" >
+        <md-icon svgIcon="svg-filter" class="ng-scope">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
+                <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"></path>
+                <path d="M0 0h24v24H0z" fill="none"></path>
+            </svg>
+        </md-icon>
+    </button>
+    <md-select placeholder="Select Series" [(ngModel)]="_series.current" class="top-selector" aria-label="Select Insights Series">
+        <md-option *ngFor="let tag of list" [value]="tag._embedded['wp:term'][1][0].slug" class="top-selector-option" >
+         {{tag._embedded['wp:term'][1][0].name}}
+        </md-option>
+    </md-select>
+    <md-select placeholder="Select Category" class="top-selector" aria-label="Select Category">
+        <md-option class="top-selector-option">
+          
+        </md-option>
+    </md-select>
+
+</div>

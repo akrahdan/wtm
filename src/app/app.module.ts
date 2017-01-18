@@ -52,6 +52,16 @@ import { InsightWidgetComponent } from './home/insight-widget/insight-widget.com
 import { FilterComponent } from './home/filter/filter.component';
 import { ClientService } from './services/client/client.service';
 import { TimeService } from './services/time/time.service';
+import { SeriesService } from './services/series/series.service';
+import { SidenavService } from './services/sidenav/sidenav.service';
+import { ContentService } from './services/content/content.service';
+import { LoaderComponent } from './shared/loader/loader.component';
+import { SidenavComponent } from './shared/sidenav/sidenav.component';
+import { CarouselComponent } from './home/carousel/carousel.component';
+import { ResourceComponent } from './shared/resource/resource.component';
+import { CollectionComponent } from './blog/health/collection/collection.component';
+import { HealthDetailComponent } from './blog/health/health-detail/health-detail.component';
+import { SelectorComponent } from './blog/health/selector/selector.component';
 
 
 
@@ -94,7 +104,14 @@ import { TimeService } from './services/time/time.service';
     HeaderComponent,
     SearchComponent,
     InsightWidgetComponent,
-    FilterComponent
+    FilterComponent,
+    LoaderComponent,
+    SidenavComponent,
+    CarouselComponent,
+    ResourceComponent,
+    CollectionComponent,
+    HealthDetailComponent,
+    SelectorComponent
   ],
   imports: [
     BrowserModule,
@@ -105,7 +122,7 @@ import { TimeService } from './services/time/time.service';
     MaterialModule.forRoot()
   ],
   providers: [WpApiPosts,WpApiTerms, Angular2TokenService, CustomeStripeService, AlertService, LoginGuardService, ClientService,
-  TimeService],
+  TimeService, SeriesService, SidenavService, ContentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

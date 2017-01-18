@@ -11,7 +11,7 @@
         <div class="header-content" [style.margin-bottom.px]="bottomMargin">
             <div #topbar class="header-topbar header-topbar-grow header-with-search" [class.toolbar-shadow]="showShadow" style="background-color: rgb(66, 133, 244);">
                 <div class="header-topbar-left">
-                    <button class="menu-btn ng-isolate-scope" id="sidenav-menu-btn">
+                    <button (click)="_sidenav.toggle()" class="menu-btn ng-isolate-scope" id="sidenav-menu-btn">
                         <div class="sidenav-container" title="Open menu">
                             <md-icon md-svg-src="https://ssl.gstatic.com/trends_nrtr/863_RC25/ic_menu_24px.svg" aria-hidden="true">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fit="" preserveAspectRatio="xMidYMid meet" focusable="false">
@@ -63,6 +63,8 @@
                         </div>
                         <div class="homepage-toolbar layout-align-space-between-center layout-row" layout="row" layout-align="space-between center">
                             <h2 class="ng-binding">{{_time.currentDate| date }}</h2>
+                            <app-filter *ngIf="content.home"></app-filter>
+                            <app-selector *ngIf="content.health"></app-selector>
                         </div>
 
                     </div>
@@ -74,6 +76,9 @@
 
         </div>
     </div>
+    <app-sidenav [open]="_sidenav.opened"></app-sidenav>
 
 
 </header>
+
+ 
