@@ -1,5 +1,6 @@
-import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
-
+import { Component, OnInit, HostListener, ViewChild, ElementRef, Renderer, OnDestroy } from '@angular/core';
+import { WpApiPosts, WpApiTerms } from '../../services/wp-api-angular';
+import { URLSearchParams, RequestOptionsArgs, Headers } from '@angular/http';
 import * as _ from "lodash";
 import { ClientService } from '../../services/client/client.service';
 import { TimeService } from '../../services/time/time.service';
@@ -12,7 +13,7 @@ import { ContentService } from '../../services/content/content.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit,OnDestroy {
 
   private pageTitle: any;
   private pageSubTitle: any;
@@ -35,6 +36,9 @@ export class HeaderComponent implements OnInit {
   private bottomMargin: any
   private bannerText:any
   private blockButtonsInHeaderOnScroll: boolean;
+  private exploreheader:boolean;
+  private post:any
+  private current: any
 
   private oi = {
     EMPTY_STORY: "EMPTY_STORY",
@@ -71,8 +75,7 @@ export class HeaderComponent implements OnInit {
     this.imageOpacityPercentage = this.bodyScroll / header;
     this.bottomMargin = host < this.contentOverlap ? host : this.contentOverlap;
 
-    console.log(this.bottomMargin);
-    console.log("hide content:" + this.hideHeaderContent);
+   
 
   }
 
@@ -82,9 +85,9 @@ export class HeaderComponent implements OnInit {
   }
 
   @ViewChild("topbar") topbar
-  @ViewChild("header") header
+  @ViewChild("header") header:ElementRef
 
-  constructor(private client: ClientService, private elRef: ElementRef, private _time: TimeService, private _sidenav:SidenavService, private _loader: SeriesService, private content: ContentService) {
+  constructor(private client: ClientService, private elRef: ElementRef, private _time: TimeService, private _sidenav:SidenavService, private _loader: SeriesService, private content: ContentService, private renderer: Renderer, private wpApiPosts: WpApiPosts, private _tags: WpApiTerms,) {
     this.imageLoaded = !1;
     this.showShadow = !1;
     this.hideHeaderContent = !1;
@@ -96,12 +99,43 @@ export class HeaderComponent implements OnInit {
       enableSearch: !0,
       enableScrollOpacity: !1,
       bottomMargin: 0,
-      imageOpacityPercentage: 0,
-      bannerText: "The Truth About Hell"
+      imageOpacityPercentage: 0
 
 
     })
+
+    
   }
+
+  fetchInitData() {
+    let tagparams = new URLSearchParams('categories=57&per_page=100&_embed');
+    let tagoptions: RequestOptionsArgs = {
+      url: null,
+      method: null,
+      search: tagparams,
+      body: null,
+      withCredentials: false
+
+
+    }
+
+
+    this.wpApiPosts.getList(tagoptions).toPromise()
+      .then(response => response.json())
+      .then(body => {
+        this.post = body.filter((item) => item.content.rendered.length > 0);
+        this.post = this.post.reverse();
+        let current = this.post[0];
+       
+        this.current = current;
+        this.bannerText = this.current.title.rendered;
+       
+
+      })
+
+  }
+
+
 
 
   getIsDesktopMode_() {
@@ -122,6 +156,12 @@ export class HeaderComponent implements OnInit {
     return a.bodyScroll > (layout === d.YEAR_IN_SEARCH_2015_STORY || layout === d.YEAR_IN_SEARCH_2015_HUB ? b / 6 : 0)
   }
   ngOnInit() {
+   
+   this.fetchInitData()
+    
+  }
+
+  ngOnDestroy(){
     
   }
 

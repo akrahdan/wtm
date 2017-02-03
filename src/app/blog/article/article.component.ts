@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { URLSearchParams, RequestOptionsArgs, Headers } from '@angular/http';
-
+import { ContentService } from '../../services/content/content.service';
 import 'rxjs/add/operator/toPromise';
 import { WpApiPosts } from '../../services/wp-api-angular';
 
@@ -11,7 +11,7 @@ import { WpApiPosts } from '../../services/wp-api-angular';
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.css']
 })
-export class ArticleComponent implements OnInit {
+export class ArticleComponent implements OnInit, OnDestroy {
 
   requests = [];
   heroes = [];
@@ -19,13 +19,18 @@ export class ArticleComponent implements OnInit {
   articleData : boolean = false;
 
   constructor(
-    private wpApiPosts: WpApiPosts, private hero:WpApiPosts) {
+    private wpApiPosts: WpApiPosts, private hero:WpApiPosts, private content:ContentService) {
+
+    this.content.isExplore = true;
+    this.content.pageSubTitle = true;
+    this.content.subTitle = "Articles";
+
     const headers = new Headers({
       'Access-Control-Allow-Headers': 'Access-Control-Request-Method, Access-Control-Request-Headers'
     });
 
-    let urlparams = new URLSearchParams('categories=62&_embed');
-    let restparams = new URLSearchParams('per_page=16&_embed');
+    let urlparams = new URLSearchParams('categories=62&_embed&per_page=30');
+    let restparams = new URLSearchParams('categories=62&per_page=16&_embed');
 
     let heroparams = new URLSearchParams('categories=86&_embed');
     let heroptions:RequestOptionsArgs = {
@@ -84,6 +89,14 @@ export class ArticleComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.requests)
+  }
+
+  ngOnDestroy(){
+    
+    this.content.isExplore = false;
+    this.content.pageSubTitle = false;
+    this.content.subTitle = null;
+
   }
 
 }

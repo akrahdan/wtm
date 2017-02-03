@@ -13,7 +13,7 @@ import { WpApiPosts } from '../../services/wp-api-angular';
   templateUrl: './health.component.html',
   styleUrls: ['./health.component.css']
 })
-export class HealthComponent implements OnInit {
+export class HealthComponent implements OnInit, OnDestroy {
   private recent:any;
   requests = [];
   heroe = [];
@@ -24,6 +24,9 @@ export class HealthComponent implements OnInit {
     this.fetchPost();
     this.content.home = false;
     this.content.health = true;
+    this.content.isExplore = false;
+    this.content.pageSubTitle = true;
+    this.content.subTitle = "Health";
     
   }
 
@@ -74,7 +77,7 @@ export class HealthComponent implements OnInit {
     this.wpApiPosts.getList(recentoptions).toPromise()
       .then(response => response.json())
       .then(body => {
-        this.recent = body;
+        this.recent = body.reverse();
        
 
       })
@@ -83,7 +86,9 @@ export class HealthComponent implements OnInit {
     this.wpApiPosts.getList(options).toPromise()
       .then(response => response.json())
       .then(body => {
-        this.requests = body;
+        this.requests = body.reverse();
+        let request = this.requests[0];
+        this.content.bannerText = request.title.rendered;
         this.articleData = true;
         this._series.isLoading = false;
 
@@ -100,6 +105,10 @@ export class HealthComponent implements OnInit {
   ngOnDestroy() {
     this.requests = [];
     this.heroe = [];
+
+    this.content.health = false;
+    this.content.isExplore = true;
+    this.content.subTitle = '';
   }
 
 }

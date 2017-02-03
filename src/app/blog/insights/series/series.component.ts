@@ -18,7 +18,7 @@ export class SeriesComponent implements OnChanges {
     this.wpApiPosts.getList(options).toPromise()
       .then(response => response.json())
       .then(body => {
-        this.post = body;
+        this.post = body.reverse();
       })
   }
 
@@ -46,7 +46,7 @@ export class SeriesComponent implements OnChanges {
           tagId = tag.id;
 
         }
-        let urlparams = new URLSearchParams('tags=' + tagId + '&_embed');
+        let urlparams = new URLSearchParams('tags=' + tagId + '&per_page=30&_embed');
         let options: RequestOptionsArgs = {
           url: null,
           method: null,

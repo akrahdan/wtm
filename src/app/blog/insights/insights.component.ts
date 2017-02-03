@@ -21,10 +21,10 @@ export class InsightsComponent implements OnInit {
       'Access-Control-Allow-Headers': 'Access-Control-Request-Method, Access-Control-Request-Headers'
     });
 
-    let urlparams = new URLSearchParams('categories=101&per_page=40&_embed');
+    let urlparams = new URLSearchParams('categories=57&per_page=40&_embed');
     let restparams = new URLSearchParams('per_page=16&_embed');
 
-    let heroparams = new URLSearchParams('categories=82&per_page=1&_embed');
+    let heroparams = new URLSearchParams('categories=57&per_page=1&_embed');
     let heroptions:RequestOptionsArgs = {
         url: null,
         method: null,

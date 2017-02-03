@@ -1,0 +1,78 @@
+.resource__title {
+    font-size: 60px;
+    line-height: 100%;
+    font-weight: 700;
+    margin-bottom: 0.2em;
+    line-height: 105%;
+    display: block;
+    text-align: center
+}
+
+@media (max-width: 650px) {
+    .resource__title {
+        font-size:42px;
+        line-height: 100%;
+        font-weight: 700;
+        margin-bottom: 0.2em;
+        line-height: 105%
+    }
+}
+
+.resource__title.lab-title-switch {
+    padding-bottom: 5px
+}
+
+.resource__title--books {
+    text-align: left
+}
+
+.resource__subtitle {
+    text-align: center;
+    font-size: 30px;
+    line-height: 120.68966%;
+    font-weight: 700;
+    margin-bottom: 0.2em;
+    margin-top: -5px;
+    display: block
+}
+
+.resource__subtitle::after {
+    content: '';
+    display: table;
+    clear: both
+}
+
+@media (max-width: 650px) {
+    .resource__subtitle {
+        font-size:24px;
+        line-height: 110%
+    }
+}
+
+.resource {
+    position: relative;
+    margin-top: -30px;
+    padding-bottom: 55px;
+    background-color: #ffffff
+}
+
+.resource--solid-joys,.resource--labs {
+    margin-top: 0
+}
+
+.resource__wrapper {
+    position: relative;
+    padding: 15px
+}
+
+.resource__wrapper::after {
+    content: '';
+    display: table;
+    clear: both
+}
+
+.resource__wrapper hr {
+    width: 50px;
+    margin: 16px auto
+}
+

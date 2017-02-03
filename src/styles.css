@@ -11561,7 +11561,7 @@ md-datepicker[disabled] .md-datepicker-triangle-button {
     overflow: hidden
 }
 
-md-dialog {
+div.md-dialog {
     opacity: 0;
     min-width: 240px;
     max-width: 80%;
@@ -11577,21 +11577,21 @@ md-dialog {
     flex-direction: column
 }
 
-md-dialog._md-transition-in {
+div.md-dialog._md-transition-in {
     opacity: 1;
     transition: all .4s cubic-bezier(0.25,0.8,0.25,1);
     -webkit-transform: translate(0,0) scale(1);
     transform: translate(0,0) scale(1)
 }
 
-md-dialog._md-transition-out {
+div.md-dialog._md-transition-out {
     opacity: 0;
     transition: all .4s cubic-bezier(0.25,0.8,0.25,1);
     -webkit-transform: translate(0,100%) scale(0.2);
     transform: translate(0,100%) scale(0.2)
 }
 
-md-dialog>form {
+div.md-dialog>form {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -11601,11 +11601,11 @@ md-dialog>form {
     overflow: auto
 }
 
-md-dialog .md-dialog-content {
+div.md-dialog .md-dialog-content {
     padding: 24px
 }
 
-md-dialog md-dialog-content {
+div.md-dialog md-dialog-content {
     -webkit-order: 1;
     -ms-flex-order: 1;
     order: 1;
@@ -11616,7 +11616,7 @@ md-dialog md-dialog-content {
     -webkit-overflow-scrolling: touch
 }
 
-md-dialog md-dialog-content:not([layout=row])>*:first-child:not(.md-subheader) {
+div.md-dialog md-dialog-content:not([layout=row])>*:first-child:not(.md-subheader) {
     margin-top: 0
 }
 
@@ -29311,7 +29311,7 @@ md-backdrop.md-opaque.md-default-theme,.md-dialog-container {
 }
 
 .filter-dialog .filter-dialog-toolbar {
-    background-color: #4285f4;
+    background-color: #4285f4 !important;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
     height: 56px;
     padding-left: 6px
@@ -29365,7 +29365,8 @@ md-backdrop.md-opaque.md-default-theme,.md-dialog-container {
 .filter-dialog .filter-dialog-content .filter-dialog-menu-option {
     border-bottom: 1px solid #e0e0e0;
     font-size: 16px;
-    padding: 22px 16px
+    padding: 22px 16px;
+    widows: 100%
 }
 
 .filter-dialog .filter-dialog-content .filter-dialog-menu-option:active {
@@ -30191,7 +30192,7 @@ md-backdrop.md-opaque.md-default-theme {
 
 @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
     .logo-container .header-logo {
-        background-image:url("https://www.gstatic.com/images/branding/lockups/2x/lockup_trends_light_color_142x24dp.png");
+        background-image:url("https://firebasestorage.googleapis.com/v0/b/wtministry-766b6.appspot.com/o/wtm%20logo-normal.png?alt=media&token=3ae8d993-0f8f-493e-9efe-a0a70b0b8fd6");
         background-size: 100%
     }
 }
@@ -30202,7 +30203,7 @@ md-backdrop.md-opaque.md-default-theme {
 
 @media (-webkit-min-device-pixel-ratio: 2),(min-resolution:192dpi) {
     .logo-container .sidenav-logo {
-        background-image:url("https://www.gstatic.com/images/branding/lockups/2x/lockup_trends_color_142x24dp.png");
+        background-image:url("https://firebasestorage.googleapis.com/v0/b/wtministry-766b6.appspot.com/o/wtm%20logo-normal.png?alt=media&token=3ae8d993-0f8f-493e-9efe-a0a70b0b8fd6");
         background-size: 100%
     }
 }
@@ -31886,16 +31887,16 @@ autocomplete>md-autocomplete input:-ms-input-placeholder {
     cursor: hand
 }
 
-md-dialog {
+div.md-dialog {
     box-shadow: rgba(0,0,0,0.2) 0 27px 24px 0;
     min-width: 336px
 }
 
-md-dialog.md-default-theme {
+div.md-dialog.md-default-theme {
     border-radius: 2px!important
 }
 
-md-dialog .md-dialog-actions {
+div.md-dialog .div.md-dialog-actions {
     flex-direction: row-reverse;
     padding: 16px
 }
@@ -33243,17 +33244,17 @@ explore-mobile-hub {
     z-index: 100
 }
 
-md-dialog .individual-search-term-pickers {
+div.md-dialog .individual-search-term-pickers {
     height: 281px;
     width: 344px
 }
 
-md-dialog .individual-search-term-pickers .filters-wrapper {
+div.md-dialog .individual-search-term-pickers .filters-wrapper {
     height: 226px;
     padding: 24px
 }
 
-md-dialog .individual-search-term-pickers .filters-wrapper .filter-title {
+div.md-dialog .individual-search-term-pickers .filters-wrapper .filter-title {
     color: rgba(0,0,0,0.87);
     font-size: 20px;
     letter-spacing: 0;
@@ -33261,15 +33262,15 @@ md-dialog .individual-search-term-pickers .filters-wrapper .filter-title {
     padding-bottom: 15px
 }
 
-md-dialog .individual-search-term-pickers .filters-wrapper .filter-title .filter-term-title {
+div.md-dialog .individual-search-term-pickers .filters-wrapper .filter-title .filter-term-title {
     font-weight: bold
 }
 
-md-dialog .individual-search-term-pickers .filters-wrapper .individual-filter {
+div.md-dialog .individual-search-term-pickers .filters-wrapper .individual-filter {
     height: 60px
 }
 
-md-dialog .individual-search-term-pickers .filters-wrapper .filter-icon {
+div.md-dialog .individual-search-term-pickers .filters-wrapper .filter-icon {
     color: rgba(0,0,0,0.54);
     height: 24px;
     margin-right: 24px;
@@ -33278,7 +33279,7 @@ md-dialog .individual-search-term-pickers .filters-wrapper .filter-icon {
     width: 24px
 }
 
-md-dialog .individual-search-term-pickers .filters-wrapper .search-term-filter {
+div.md-dialog .individual-search-term-pickers .filters-wrapper .search-term-filter {
     color: rgba(0,0,0,0.54)!important;
     display: inline-block;
     font-size: 16px;
@@ -33288,16 +33289,16 @@ md-dialog .individual-search-term-pickers .filters-wrapper .search-term-filter {
     width: 241px
 }
 
-md-dialog .individual-search-term-pickers .filters-wrapper .search-term-filter md-autocomplete {
+div.md-dialog .individual-search-term-pickers .filters-wrapper .search-term-filter md-autocomplete {
     top: 0!important;
     width: 241px
 }
 
-md-dialog .individual-search-term-pickers .filters-wrapper .search-term-filter ._md-select-placeholder {
+div.md-dialog .individual-search-term-pickers .filters-wrapper .search-term-filter ._md-select-placeholder {
     color: rgba(0,0,0,0.54)!important
 }
 
-md-dialog .individual-search-term-pickers .dialog-buttons {
+div.md-dialog .individual-search-term-pickers .dialog-buttons {
     border: 1px solid rgba(0,0,0,0.12);
     color: #4284f3;
     font-size: 14px;
@@ -33307,12 +33308,12 @@ md-dialog .individual-search-term-pickers .dialog-buttons {
     text-align: right
 }
 
-md-dialog .individual-search-term-pickers .dialog-buttons .dialog-button {
+div.md-dialog .individual-search-term-pickers .dialog-buttons .dialog-button {
     margin-left: 2px;
     min-width: 54px!important
 }
 
-md-dialog .individual-search-term-pickers .dialog-buttons .dialog-button .md-ripple-container {
+div.md-dialog .individual-search-term-pickers .dialog-buttons .dialog-button .md-ripple-container {
     display: none
 }
 
@@ -35637,7 +35638,7 @@ html[dir="rtl"] .search-term-options-menu button md-icon {
 
 @media screen and (min-width: 1980px) {
     .header-container-fs .logo-container-fs .logo-wrapper-fs .header-logo-fs {
-        background-image:url('https://www.gstatic.com/trends/trends-lockup-1080.png');
+        background-image:url('https://firebasestorage.googleapis.com/v0/b/wtministry-766b6.appspot.com/o/wtm-logo.png?alt=media&token=56561a7a-64f2-4ad7-bc0d-a0c47f922b05');
         background-size: 249px 42px;
         height: 42px;
         width: 249px
@@ -35646,7 +35647,7 @@ html[dir="rtl"] .search-term-options-menu button md-icon {
 
 @media screen and (min-width: 1980px) and (-webkit-min-device-pixel-ratio:2),(min-resolution:192dpi) {
     .header-container-fs .logo-container-fs .logo-wrapper-fs .header-logo-fs {
-        background-image:url('https://www.gstatic.com/trends/trends-lockup-1080@2x.png')
+        background-image:url('https://firebasestorage.googleapis.com/v0/b/wtministry-766b6.appspot.com/o/wtm-logo.png?alt=media&token=56561a7a-64f2-4ad7-bc0d-a0c47f922b05')
     }
 }
 
@@ -36245,4 +36246,24 @@ html[dir="rtl"] .md-calendar-date:first-child,html[dir="rtl"] .md-calendar-day-h
   height: 30px;
   width: 30px;
   display: inline-block;
+}
+
+md-dialog-container {
+    max-width: inherit !important;
+}
+
+.filter-dialog-menu-item .md-list-item {
+    display: flex;
+    flex-direction: column !important;
+    align-items: flex-start;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    box-sizing: border-box;
+    font-size: 16px;
+    height: auto !important;
+    padding: 0 16px;
+}
+
+.filter-dialog .filter-dialog-content .filter-dialog-menu-item .filter-dialog-menu-item-selection {
+   
+    width: 100%;
 }

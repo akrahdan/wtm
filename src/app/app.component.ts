@@ -13,7 +13,7 @@ export class AppComponent implements AfterContentInit {
   private 
   constructor(private _alertService: AlertService, private _tokenService: Angular2TokenService, private _apipost:WpApiPosts, private _tags:WpApiTerms) { 
     this._tokenService.init({
-      apiPath: 'http://localhost:3000',
+      apiPath: 'https://arcane-shore-63814.herokuapp.com',
 
       signInPath: 'auth/sign_in',
       signInRedirect: null,
@@ -25,11 +25,11 @@ export class AppComponent implements AfterContentInit {
 
       registerAccountPath: 'auth',
       deleteAccountPath: 'auth',
-      registerAccountCallback: window.location.href,
+      registerAccountCallback: 'https://wtministry-766b6.firebaseapp.com/users/sign-up',
 
       updatePasswordPath: 'auth',
       resetPasswordPath: 'auth/password',
-      resetPasswordCallback: 'http://localhost:4200/users/password/edit',
+      resetPasswordCallback: 'https://wtministry-766b6.firebaseapp.com/users/password/edit',
 
       oAuthPaths: {
         github: 'auth/github'

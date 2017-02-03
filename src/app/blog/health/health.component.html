@@ -1,7 +1,7 @@
 <div class="app-content content home ng-scope _md">
     <div class="content-wrap">
 
-        <app-collection [slug]="_series.current"></app-collection>
+        <app-collection [slug]="_series.hcurrent"></app-collection>
 
 
         <div class="generic-container-wrapper">
@@ -14,7 +14,7 @@
                         <div *ngFor="let article of recent" class="card--resource grid-l-8 grid-xl-6" data-position="">
                             <a class="card__inner"[routerLink]="[article._embedded['wp:term'][0][0].slug, article.slug]">
                                 <div class="card--resource__labels">
-                                    <div class="card--resource__labels__label">Article</div>
+                                    <div class="card--resource__labels__label">Health</div>
                                 </div>
                                 <div class="card--resource__portrait-image-container">
                                     <div class="card--resource__image--portrait">
@@ -139,7 +139,7 @@
                                         </div>
                                         {{post._embedded.author[0].name}}
                                     </div>
-                                    <div class="share share--card js-share-values" data-link="http://www.desiringgod.org/articles/makeup-is-a-hobby-not-a-necessity"
+                                    <div class="share share--card js-share-values"
                                          data-title="Makeup Is a Hobby, Not a Necessity">
                                         <div class="share__button">
                                             <div class="svg">

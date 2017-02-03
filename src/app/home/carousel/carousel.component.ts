@@ -6,6 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MdIconRegistry } from '@angular/material';
 import { ClientService } from '../../services/client/client.service';
 import { SeriesService } from '../../services/series/series.service';
+import { ContentService } from '../../services/content/content.service';
 import * as _ from "lodash";
 
 @Component({
@@ -119,7 +120,7 @@ export class CarouselComponent implements OnChanges, OnInit {
   }
 
 
-  constructor(iconRegistry: MdIconRegistry, sanitizer: DomSanitizer, private _client: ClientService, private wpApiPosts: WpApiPosts, private _tags: WpApiTerms, private _series: SeriesService, private element: ElementRef) {
+  constructor(iconRegistry: MdIconRegistry, sanitizer: DomSanitizer, private _client: ClientService, private wpApiPosts: WpApiPosts, private _tags: WpApiTerms, private _series: SeriesService, private element: ElementRef, private content:ContentService) {
     iconRegistry.addSvgIcon(
       'arrow-next',
       sanitizer.bypassSecurityTrustResourceUrl('assets/img/ic_arrow_forward_24px.svg'));
@@ -137,7 +138,7 @@ export class CarouselComponent implements OnChanges, OnInit {
     this.wpApiPosts.getList(options).toPromise()
       .then(response => response.json())
       .then(body => {
-        this.post = body;
+        this.post = body.reverse();
         this._series.isLoading = false;
         console.log(this._series.isLoading)
       })
@@ -161,7 +162,9 @@ export class CarouselComponent implements OnChanges, OnInit {
       .then(response => response.json())
       .then(body => {
         this.post = body.filter((item) => item.content.rendered.length > 0);
+        this.post = this.post.reverse();
         let current = this.post[0];
+        this.content.bannerText = current.title.rendered;
         this.current = current._embedded['wp:term'][1][0].slug;
         this._series.current = this.current;
 
@@ -179,7 +182,7 @@ export class CarouselComponent implements OnChanges, OnInit {
     const taxonomy = "tags";
     let tagId: any;
 
-    let taxparams = new URLSearchParams('slug=' + this.slug);
+    let taxparams = new URLSearchParams('slug=' + this.slug + '&per_page=30');
 
     let taxoptions: RequestOptionsArgs = {
       url: null,
@@ -197,7 +200,7 @@ export class CarouselComponent implements OnChanges, OnInit {
           tagId = tag.id;
 
         }
-        let urlparams = new URLSearchParams('tags=' + tagId + '&_embed');
+        let urlparams = new URLSearchParams('tags=' + tagId + '&per_page=30&_embed');
         let options: RequestOptionsArgs = {
           url: null,
           method: null,

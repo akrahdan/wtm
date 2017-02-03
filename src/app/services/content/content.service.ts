@@ -4,8 +4,12 @@ import { Injectable } from '@angular/core';
 export class ContentService {
   public home:boolean;
   public health: boolean;
+  public pageSubTitle: boolean;
+  public isExplore:boolean;
+  public subTitle:any;
+  public bannerText: any
   constructor() { 
-    this.home = true;
+    this.home = false;
     this.health =false;
   }
 

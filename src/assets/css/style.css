@@ -4234,13 +4234,11 @@ html[dir="rtl"] .meta-nav-module .content {
         padding-bottom: 24px
     }
 
-    .card-list-view .card--resource .card__inner,.card-list-view .card--resource--text .card__inner,.card-list-view .card--resource--full-image .card__inner {
+    .card-list-view .card--resource .card__inner,.card-list-view .card--resource--text .card__inner,.card-list-view .card--resource--full-image .card__inner .card__shadow {
         height: 240px
     }
 
-    .card-list-view .card--resource .card__inner .card--resource__image--landscape,.card-list-view .card--resource--text .card__inner .card--resource__image--landscape,.card-list-view .card--resource--full-image .card__inner .card--resource__image--landscape {
-        padding-top: 32%
-    }
+    
 }
 
 .resource__body .card-article-view {
@@ -4397,7 +4395,7 @@ html[dir="rtl"] .meta-nav-module .content {
         padding-top: 20px
     }
 
-    .resource__body .card-article-view .card--resource .card__inner,.resource__body .card-article-view .card--resource--text .card__inner,.resource__body .card-article-view .card--resource--full-image .card__inner {
+    .resource__body .card-article-view .card--resource .card__inner,.resource__body .card-article-view .card--resource--text .card__inner,.resource__body .card-article-view .card--resource--full-image .card__inner .card__shadow {
         height: 280px
     }
 
@@ -4446,9 +4444,7 @@ html[dir="rtl"] .meta-nav-module .content {
         height: 240px
     }
 
-    .resource__body .card-article-view .card--resource .card__inner .card--resource__image--landscape,.resource__body .card-article-view .card--resource--text .card__inner .card--resource__image--landscape,.resource__body .card-article-view .card--resource--full-image .card__inner .card--resource__image--landscape {
-        padding-top: 35%
-    }
+    
 }
 
 .card--solid-joys {
@@ -6263,7 +6259,7 @@ html[dir="rtl"] .meta-nav-module .content {
 .resource__endorsements .endorsement b {
     color: #666666;
     font-weight: 700;
-    font-family: "proxima-nova", Helvetica, Arial, sans-serif
+    font-family: Roboto, Helvetica, Arial, sans-serif
 }
 
 .resource__endorsements .endorsement em {
@@ -13795,7 +13791,7 @@ body .grouping {
 }
 
 .resource__body {
-    font-family: "proxima-nova", Georgia, "Times New Roman", Times, serif;
+    font-family: Roboto, Georgia, "Times New Roman", Times, serif;
     font-size: 16px;
     line-height: 180%;
     font-weight: 300;

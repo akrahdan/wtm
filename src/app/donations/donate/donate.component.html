@@ -1,7 +1,7 @@
-
 <div class="page-background">
     <div class="featured-top">
-        <img src="https://firebasestorage.googleapis.com/v0/b/wtministry-766b6.appspot.com/o/Donation.jpg?alt=media&token=b94e0814-1b45-435c-9e96-01b56746d51f" />
+        <img src="https://firebasestorage.googleapis.com/v0/b/wtministry-766b6.appspot.com/o/Donation.jpg?alt=media&token=b94e0814-1b45-435c-9e96-01b56746d51f"
+        />
 
     </div>
 
@@ -18,16 +18,21 @@
 
         <div class="resource__body js-highlightable">
             <p>
-                White Throne Ministries is a nonprofit Christian organization that does not depend on any parent organization for financial support. This ministry is sustained by your prayers and financial giving. If you've been blessed by any of our outreach programmes, you may consider being a monthly financial partner or provide a one - time gift donation for our ministry. Kindly also check out our ministry needs and prayerfully consider how the Lord can use you to finish His work by partnering with us. You can send your donations to us through any of the following channels:
+                White Throne Ministries is a nonprofit Christian organization that does not depend on any parent organization for financial
+                support. This ministry is sustained by your prayers and financial giving. If you've been blessed by any of
+                our outreach programmes, you may consider being a monthly financial partner or provide a one - time gift
+                donation for our ministry. Kindly also check out our ministry needs and prayerfully consider how the Lord
+                can use you to finish His work by partnering with us.
             </p>
 
             <p>
-                For any information you might need on your financial giving to us or if you want to send gifts such as automobiles, valuables, property, estate or living trusts, please call us at +233243105287 or +233509834815. You may also e-mail us on donations@whitethroneministries.com
-
-                Every gift you give to White Throne Ministries will be put to maximum use with the highest financial standards of integrity.
+                For any information you might need on your financial giving to us or if you want to send gifts such as automobiles, valuables,
+                property, estate or living trusts, please call us at +233243105287 or +233509834815. You may also e-mail
+                us on info@whitethroneministries.com Every gift you give to White Throne Ministries will be put to maximum
+                use with the highest financial standards of integrity.
             </p>
 
-           
+
 
 
 
@@ -35,16 +40,34 @@
         </div>
     </div>
     <div class="constrain">
+        <div #mobilewrapper class="mobile-sub-nav-wrapper">
+            <h1 (click)="toggleNav()"><span>Donate</span><img class="img-svg" src="/assets/images/chevron-down.svg"></h1>
+            <nav #subnav class="mobile-sub-nav" [class.active]="active" [style.display]="activeblock()">
+                <h1 (click)="toggleNav()"><span>Donate</span><img class="img-svg" src="/assets/images/chevron-down.svg"></h1>
+                <ul>
+                    <li class="selected" [ngClass]="{'selected': temp =='once'}" (click)="selected('once')">
+                        <a [routerLink]="['/donations']">
+                    One-Time Donation
+                </a>
+                    </li>
+                    <li [ngClass]="{'selected': temp =='monthly'}" (click)="selected('monthly')">
+                        <a [routerLink]="['/donations/monthly']">
+                    Monthly Donation
+                </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
         <aside class="sidebar left-sidebar">
             <section class="sidebar-module account" *ngIf="_tokenService.currentUserData">
                 <h2 class="module-title">account</h2>
                 <a class="button" [routerLink]="['/account']">View Account</a>
                 <app-log-out></app-log-out>
-               
+
             </section>
             <section class="sidebar-module account" *ngIf="!_tokenService.currentUserData">
                 <h2 class="module-title">account</h2>
-                
+
                 <a class="button" [routerLink]="['/users/sign-in']">Log in</a>
                 <a class="button" [routerLink]="['/users/sign-up']">Create an account</a>
             </section>
@@ -53,36 +76,25 @@
                 <h2 class="module-title">Other ways to donate</h2>
                 <strong>By Check</strong>
                 <p>
-                    Bank Account
-                    Account Information:
-
-                    Account Name: White Throne Ministries
-                    Account Number: 0213074493340701
-                    Bankers: Ecobank - Ghana.
-                    Branch: Harper Road Branch,
-                    Kumasi, Ghana.
+                    Bank Account Information: Account Name: White Throne Ministries Account Number: 0213074493340701 Bankers: Ecobank
+                    - Ghana. Branch: Harper Road Branch, Kumasi, Ghana.
                 </p>
 
                 <strong>By Mobile Money</strong>
 
 
                 <p>
-                    MTN Mobile Money
-                    Account Number: 0541322986
+                    MTN Mobile Money Account Number: 0541322986
 
-                    <br> Vodafone Cash
-                    Account Number: 0205598213
+                    <br> Vodafone Cash Account Number: 0205598213
                 </p>
                 <strong>By Mail</strong>
                 <p>
-                    White Throne Ministries,
-                    P. O. Box KS 1646,
-                    Adum  Kumasi, Ashanti,
-                    Ghana.
+                    White Throne Ministries, P. O. Box KS 1646, Adum Kumasi, Ashanti, Ghana.
                 </p>
                 <p>
                     If you have a question about giving, please contact
-                    <a href="mailto:donations@whitethroneministres.org">Samuel Nyarko</a>.
+                    <a href="mailto:info@whitethroneministres.org">info@whitethroneministries.org</a>.
                 </p>
 
             </section>
@@ -90,53 +102,42 @@
 
 
         </aside>
+
+
         <router-outlet></router-outlet>
 
+        <div *ngIf="client.isMobileMode">
+            <section class="sidebar-module other-ways-to-donate">
+                <h2 class="module-title">Other ways to donate</h2>
+                <strong>By Check</strong>
+                <p>
+                    Bank Account Information: Account Name: White Throne Ministries Account Number: 0213074493340701 Bankers: Ecobank
+                    - Ghana. Branch: Harper Road Branch, Kumasi, Ghana.
+                </p>
 
-    </div>
+                <strong>By Mobile Money</strong>
 
-    <div class="recent-features">
-        <div class="grid-container">
-            <div class="grid-s-6 grid-m-3 grid-l-6">
-                <div class="recent-feature super-hero">
-                    <div class="constrain">
-                        <a class="hero-link" href="/articles/lord-deliver-me-from-distraction">
-                            <div class="hero-text-outer">
-                                <div class="hero-text-inner">
-                                    <div class="hero-text">
-                                        <h1 style="color: #ffffff">Lord, Deliver Me from Distraction</h1>
-                                        <h2 style="color: #000000">A Prayer for&nbsp;Focus</h2>
-                                    </div>
-                                </div>
-                            </div>
 
-                        </a>
-                        <img alt="" class="image-container lazyloaded" src="https://cdn.desiringgod.org/website_uploads/images/heroes/super/1161/sidekick_lord-deliver-me-from-distraction.jpg?1481069680" data-src="https://cdn.desiringgod.org/website_uploads/images/heroes/super/1161/sidekick_lord-deliver-me-from-distraction.jpg?1481069680">
-                    </div>
-                </div>
+                <p>
+                    MTN Mobile Money Account Number: 0541322986
 
-            </div>
-            <div class="grid-s-6 grid-m-3 grid-l-6">
-                <div class="recent-feature super-hero">
-                    <div class="constrain">
-                        <a class="hero-link" href="/articles/if-your-right-hand-causes-you-to-sin">
-                            <div class="hero-text-outer">
-                                <div class="hero-text-inner">
-                                    <div class="hero-text">
-                                        <h1 style="color: #ffffff">If Your Right Hand Causes You to&nbsp;Sin</h1>
-                                        <h2 style="color: #FBD554">Ten Biblical Reflections on Masturbation</h2>
-                                    </div>
-                                </div>
-                            </div>
+                    <br> Vodafone Cash Account Number: 0205598213
+                </p>
+                <strong>By Mail</strong>
+                <p>
+                    White Throne Ministries, P. O. Box KS 1646, Adum Kumasi, Ashanti, Ghana.
+                </p>
+                <p>
+                    If you have a question about giving, please contact
+                    <a href="mailto:info@whitethroneministres.org">info@whitethroneministries.org</a>.
+                </p>
 
-                        </a>
-                        <img alt="" class="image-container lazyloaded" src="https://cdn.desiringgod.org/website_uploads/images/heroes/super/1159/sidekick_if-your-right-hand-causes-you-to-sin.jpg?1480953128" data-src="https://cdn.desiringgod.org/website_uploads/images/heroes/super/1159/sidekick_if-your-right-hand-causes-you-to-sin.jpg?1480953128">
-                    </div>
-                </div>
+            </section>
 
-            </div>
+
         </div>
+
     </div>
 
-
+    <app-resource></app-resource>
 </div>

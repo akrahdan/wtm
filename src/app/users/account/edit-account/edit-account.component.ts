@@ -20,7 +20,7 @@ export class EditAccountComponent implements OnInit, OnDestroy {
       res => {
         this._updatePasswordData = <UpdatePasswordData>{};
         this._output = res;
-        this._output.message = "Your updates were successfully"
+        this._output.message = "Your updates were successful"
         this._alertService.output = this._output;
         
        

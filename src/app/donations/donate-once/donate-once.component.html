@@ -15,71 +15,75 @@
         </ul>
     </nav>
 
-    <div class="content">
-        <h2 id="page-title">One-Time Donation</h2>
-        <div class="donation-copy">
 
-        </div>
 
-        <form #paymentForm="ngForm"  id="payment-form" novalidate (ngSubmit)="getToken(paymentForm, $event)">
+</main>
+<div class="content">
+    <h2 id="page-title">One-Time Donation</h2>
+    <div class="donation-copy">
 
-            <p *ngIf="paymentForm.invalid" class="donation-form-error">
-                Please double check your credit card details and try again.
-            </p>
-            <fieldset class="highlight amount">
-                <legend>
-                    One-time gift amount
-                    <span class="required">*</span>
-                </legend>
-                <div class="donation-amount">
-                    <span class="large">$</span>
-                    <div class="">
-                        <input [(ngModel)]="_card.amount" class="textfield large"  type="text" name="amount"  #amount="ngModel" id="transaction_amount" required>
-                    </div>
-                    <div *ngIf="amount.errors?.required && amount.touched" class="donation-form-error">Please enter the amount you would donate</div>
+    </div>
+
+    <form #paymentForm="ngForm" id="payment-form" novalidate (ngSubmit)="getToken(paymentForm, $event)">
+
+        <p *ngIf="paymentForm.invalid" class="donation-form-error">
+            Please double check your credit card details and try again.
+        </p>
+        <fieldset class="highlight amount">
+            <legend>
+                One-time gift amount
+                <span class="required">*</span>
+            </legend>
+            <div class="donation-amount">
+                <span class="large">$</span>
+                <div class="">
+                    <input [(ngModel)]="_card.amount" class="textfield large" type="text" name="amount" #amount="ngModel" id="transaction_amount"
+                        required>
                 </div>
-            </fieldset>
+                <div *ngIf="amount.errors?.required && amount.touched" class="donation-form-error">Please enter the amount you would donate</div>
+            </div>
+        </fieldset>
 
-            <fieldset class="name">
-                <legend>
-                    Name
-                    <span class="required">*</span>
-                </legend>
-                <div class="name">
-                    <label class="text-under">
+        <fieldset class="name">
+            <legend>
+                Name
+                <span class="required">*</span>
+            </legend>
+            <div class="name">
+                <label class="text-under">
                         <div class="">
                             <input class="textfield" autocomplete="off" type="text" id="first_name">
                         </div>
                         First Name
                     </label>
-                    <label class="text-under">
+                <label class="text-under">
                         <div class="">
                             <input class="textfield" autocomplete="off" type="text" id="last_name">
                         </div>
                         Last Name
                     </label>
-                </div>
-            </fieldset>
+            </div>
+        </fieldset>
 
-            <fieldset class="credit-card">
-                <legend>
-                    Credit Card
-                    <span class="payment-errors required">*</span>
-                </legend>
+        <fieldset class="credit-card">
+            <legend>
+                Credit Card
+                <span class="payment-errors required">*</span>
+            </legend>
 
 
 
-                <div class="card-details">
+            <div class="card-details">
 
-                    <label class="text-under">
+                <label class="text-under">
                         <div class="">
                             <input class="textfield" [(ngModel)]="_card.cardNumber" name="card-number" type="text" size="20" data-stripe="number">
                         </div>
 
                         Credit Card Number
                     </label>
-                    <div class="date-selects">
-                        <label class="text-under month-select">
+                <div class="date-selects">
+                    <label class="text-under month-select">
                             <div class="">
                                 <select [(ngModel)]="_card.expiryMonth" name="expiry-month" autocomplete="off" data-stripe="exp_month">
                                     <option value="">Month</option>
@@ -100,7 +104,7 @@
                             Expiration
                             <span class="visually-hidden">Month</span>
                         </label>
-                        <label class="text-under year-select">
+                    <label class="text-under year-select">
                             <div class="">
                                 <select [(ngModel)]="_card.expiryYear" name="expiry-year" autocomplete="off" data-stripe="exp_year">
                                     <option value="">Year</option>
@@ -120,51 +124,49 @@
                             <span class="visually-hidden">Expiration Year</span>
                         </label>
 
-                        <label class="text-under small security-code">
+                    <label class="text-under small security-code">
                             <div class="">
                                 <input [(ngModel)]="_card.cvc" name="cvc" class="textfield" size="4" type="text" data-stripe="cvc">
                             </div>
                             CVC
                         </label>
 
-                    </div>
-
                 </div>
 
+            </div>
 
 
 
 
-            </fieldset>
 
-            <fieldset class="email-address">
-                <legend>
-                    Email Address
-                    <span class="required">*</span>
-                </legend>
-                <div class="email-details" *ngIf="_tokenService.currentUserData">
-                    <label class="text-under">
+        </fieldset>
+
+        <fieldset class="email-address">
+            <legend>
+                Email Address
+                <span class="required">*</span>
+            </legend>
+            <div class="email-details" *ngIf="_tokenService.currentUserData">
+                <label class="text-under">
                         <div class="">
                             <input class="textfield" autocomplete="off" type="text" required [(ngModel)]="_tokenService.currentUserData.email" name="email" id="transaction_customer_email">
                         </div>
                     </label>
-                </div>
-                <div class="email-details" *ngIf="!_tokenService.currentUserData">
-                    <label class="text-under">
+            </div>
+            <div class="email-details" *ngIf="!_tokenService.currentUserData">
+                <label class="text-under">
                         <div class="">
                             <input class="textfield" autocomplete="off" type="text" required name="email" id="transaction_customer_email">
                         </div>
                     </label>
-                </div>
-            </fieldset>
-
-            
+            </div>
+        </fieldset>
 
 
-            <input class="button submit fullwidth large" type="submit" value="Donate" [disabled]="paymentForm.invalid">
 
-             
-        </form>
-    </div>
 
-</main>
+        <input class="button submit fullwidth large" type="submit" value="Donate" [disabled]="paymentForm.invalid">
+
+
+    </form>
+</div>

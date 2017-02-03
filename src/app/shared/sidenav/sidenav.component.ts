@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, OnChanges, HostListener } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MdIconRegistry, MdSidenav } from '@angular/material';
 
@@ -10,6 +10,13 @@ import { MdIconRegistry, MdSidenav } from '@angular/material';
 export class SidenavComponent implements OnInit, OnChanges {
   
   @ViewChild("sidenav") sidenav:MdSidenav;
+  
+  @HostListener('window:click', ['$event']) onClick(){
+    if(this.sidenav._isOpened){
+      this.sidenav.close();
+    }
+  }
+
   @Input() open
   constructor(iconRegistry: MdIconRegistry, sanitizer: DomSanitizer) { 
     iconRegistry.addSvgIcon(
@@ -23,8 +30,9 @@ export class SidenavComponent implements OnInit, OnChanges {
 
   ngOnChanges(){
     if(this.open){
-      this.sidenav.toggle();
-      console.log("Opened");
+      this.sidenav.open();
+      
+      
     }
   }
 

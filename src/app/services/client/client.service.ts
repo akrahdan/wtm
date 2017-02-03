@@ -35,7 +35,9 @@ export class ClientService {
   private viewportMinimalDimensionSize_ = this.getViewportMinimalDimensionSize_();
   private isGvizLoading = !1;
   private windowInnerWidth = 0;
-  constructor() { }
+  constructor() {
+    this.onResize_();
+   }
 
   testUserAgent_(client) {
     return client.test((navigator.userAgent || navigator.vendor).toLowerCase())

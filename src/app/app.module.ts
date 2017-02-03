@@ -46,6 +46,8 @@ import { EditAccountComponent } from './users/account/edit-account/edit-account.
 import { LoginGuardService } from './users/account/login-guard.service';
 import { FeatureInsightComponent } from './home/feature-insight/feature-insight.component';
 import 'hammerjs';
+import 'intl';
+import 'intl/locale-data/jsonp/en';
 import { HeaderComponent } from './home/header/header.component';
 import { SearchComponent } from './home/search/search.component';
 import { InsightWidgetComponent } from './home/insight-widget/insight-widget.component';
@@ -62,6 +64,12 @@ import { ResourceComponent } from './shared/resource/resource.component';
 import { CollectionComponent } from './blog/health/collection/collection.component';
 import { HealthDetailComponent } from './blog/health/health-detail/health-detail.component';
 import { SelectorComponent } from './blog/health/selector/selector.component';
+import { FeaturedComponent } from './shared/featured/featured.component';
+import { ContactComponent } from './contact/contact.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { NeedsComponent } from './needs/needs.component';
+import { DialogComponent } from './home/dialog/dialog.component';
+import { DisqusComponent } from './shared/disqus/disqus.component';
 
 
 
@@ -111,7 +119,13 @@ import { SelectorComponent } from './blog/health/selector/selector.component';
     ResourceComponent,
     CollectionComponent,
     HealthDetailComponent,
-    SelectorComponent
+    SelectorComponent,
+    FeaturedComponent,
+    ContactComponent,
+    AboutUsComponent,
+    NeedsComponent,
+    DialogComponent,
+    DisqusComponent
   ],
   imports: [
     BrowserModule,
@@ -123,6 +137,7 @@ import { SelectorComponent } from './blog/health/selector/selector.component';
   ],
   providers: [WpApiPosts,WpApiTerms, Angular2TokenService, CustomeStripeService, AlertService, LoginGuardService, ClientService,
   TimeService, SeriesService, SidenavService, ContentService],
+  entryComponents: [ DialogComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

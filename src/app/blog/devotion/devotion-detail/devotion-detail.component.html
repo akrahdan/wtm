@@ -7,9 +7,7 @@
                 <h1 id="resource-title" [innerHtml]="article.title.rendered">
                    
                 </h1>
-                <h2 class="resource-subtitle" [innerHtml]="article.title.rendered">
-                   
-                </h2>
+               
             </div>
             <figure class="resource__image">
                 <img class="resource__image__img lazyloaded" alt="" [src]="article.better_featured_image.source_url" data-src="{{article.better_featured_image.source_url}}">
@@ -149,9 +147,9 @@
                             <div class="card--author">
                                 <div class="card--author__inner">
                                     <div class="grid-m-3 grid-l-6">
-                                        <a href="/authors/adam-cavalier">
+                                        <a href="{{article._embedded.author[0].name}}">
                                             <div class="card--author__image">
-                                                <img alt="{{article._embedded.author[0].name}}" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://image.desiringgod.org/author-adam-cavalier-en/square/thumb_author-adam-cavalier.png?0" class=" lazyload">
+                                                <img alt="{{article._embedded.author[0].name}}" class=" lazyload">
                                             </div>
                                         </a><h3 class="card--author__name">
                                            {{article._embedded.author[0].name}}
@@ -233,7 +231,7 @@
                     </div>
                 </div>
                 <div class="resource__author-role">
-                    <p>Guest Contributor</p>
+                    <p>WTM Staff Writer</p>
 
                 </div>
             </div>
@@ -247,6 +245,7 @@
                 {{article._embedded.author[0].description}}
 
             </footer>
+            <app-disqus></app-disqus>
         </div>
 
     </main>

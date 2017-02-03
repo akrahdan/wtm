@@ -1,5 +1,5 @@
 <md-sidenav-container>
-    
+
 </md-sidenav-container>
 <md-sidenav class="fe-sidenav-left" #sidenav opened="false">
     <div class="fe-sidenav-header layout-align-start-center layout-row" layout="row" layout-align="start center">
@@ -19,63 +19,92 @@
         <div class="fe-sidenav-list-group" id="sidenav-list-group-trends">
 
             <md-list-item>
-                <button md-button class="fe-sidenav-menu-item" href="/" (click)="homeClickHandler();toggleSidenav('Close')">
-                        Home
+                <button md-button class="fe-sidenav-menu-item" [routerLink]="['/']">
+                    Home
 
-                    </button>
+                </button>
             </md-list-item>
-
 
             <md-list-item>
-                <button md-button class="fe-sidenav-menu-item" href="/explore">
-                        Explore
+                <button md-button class="fe-sidenav-menu-item" [routerLink]="['/series']">
+                    Series
 
-                    </button>
+                </button>
             </md-list-item>
-
 
             <md-list-item>
-                <button md-button class="fe-sidenav-menu-item" href="/hottrends">
-                        Trending Searches
-                    </button>
+                <button md-button class="fe-sidenav-menu-item" [routerLink]="['/articles']">
+                    Articles
+
+                </button>
             </md-list-item>
 
+            <md-list-item>
+                <button md-button class="fe-sidenav-menu-item" [routerLink]="['/devotions']">
+                    Devotions
+
+                </button>
+            </md-list-item>
+
+            <md-list-item>
+                <button md-button class="fe-sidenav-menu-item" [routerLink]="['/health']">
+                    Health
+
+                </button>
+            </md-list-item>
 
         </div>
-        <div class="fe-sidenav-list-group" id="sidenav-list-group-partners">
-            <md-list-item> <button md-button class="fe-sidenav-menu-item">            Google Correlate          </button> </md-list-item>
-        </div>
+
         <div class="fe-sidenav-list-group" id="sidenav-list-group-terms">
-
             <md-list-item>
-                <button md-button class="fe-sidenav-menu-item" href="/" (click)="homeClickHandler();toggleSidenav('Close')">
-                        Home
+                <button md-button class="fe-sidenav-menu-item" [routerLink]="['/about-us']">
+                    About Us
 
-                    </button>
+                </button>
             </md-list-item>
 
-
             <md-list-item>
-                <button md-button class="fe-sidenav-menu-item" href="/explore">
-                        Explore
-
-                    </button>
+                <button md-button class="fe-sidenav-menu-item" [routerLink]="['/contact']">
+                    Contact
+                </button>
             </md-list-item>
 
-
             <md-list-item>
-                <button md-button class="fe-sidenav-menu-item" href="/hottrends">
-                        Trending Searches
-                    </button>
+                <button md-button class="fe-sidenav-menu-item" [routerLink]="['/engage']">
+                    Engage
+
+                </button>
             </md-list-item>
 
+            </div>
 
-        </div>
+                <div class="fe-sidenav-list-group" id="sidenav-list-group-terms">
+
+
+
+
+                    <md-list-item>
+                        <button md-button class="fe-sidenav-menu-item" [routerLink]="['/needs']">
+                            Ministry Needs
+
+                        </button>
+                    </md-list-item>
+
+                    <md-list-item>
+                        <button md-button class="fe-sidenav-menu-item" [routerLink]="['/donations']">
+                            Donate
+
+                        </button>
+                    </md-list-item>
+
+                </div>
+
+
     </md-list>
     <div class="fe-sidenav-footer">
         <button>
-                <span>Sign In</span>
-                <span> </span>
-            </button>
+            <span>Sign In</span>
+            <span> </span>
+        </button>
     </div>
 </md-sidenav>

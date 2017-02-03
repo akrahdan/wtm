@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MdIconRegistry } from '@angular/material';
 import { WpApiPosts, WpApiTerms } from '../../../services/wp-api-angular';
 import { SeriesService } from '../../../services/series/series.service';
+import { ClientService} from '../../../services/client/client.service';
 
 @Component({
   selector: 'app-selector',
@@ -20,7 +21,7 @@ export class SelectorComponent implements OnInit {
   private selected: any;
   @Input() private current: any;
 
-  constructor(private wpApiPosts: WpApiPosts, private _tags: WpApiTerms, iconRegistry: MdIconRegistry, sanitizer: DomSanitizer, private _series:SeriesService) {
+  constructor(private client: ClientService, private wpApiPosts: WpApiPosts, private _tags: WpApiTerms, iconRegistry: MdIconRegistry, sanitizer: DomSanitizer, private _series:SeriesService) {
     iconRegistry.addSvgIcon(
       'svg-filter',
       sanitizer.bypassSecurityTrustResourceUrl('assets/img/ic_filter_list_24px.svg'));
@@ -58,7 +59,7 @@ export class SelectorComponent implements OnInit {
         this.posts = body.filter((item) => item.content.rendered.length > 0);
         let current = this.posts[0];
         this.current = current._embedded['wp:term'][1][0].slug;
-        this._series.current = this.current;
+        this._series.hcurrent = this.current;
         
         for (let item of this.posts) {
         let slug = item._embedded['wp:term'][1][0].slug;

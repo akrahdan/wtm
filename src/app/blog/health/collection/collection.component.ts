@@ -131,13 +131,14 @@ export class CollectionComponent implements OnChanges, OnInit {
       xTransform: 0,
       itemsCount: 2
     });
+   this.fetchInitData();
   }
 
   fetchTag(options) {
     this.wpApiPosts.getList(options).toPromise()
       .then(response => response.json())
       .then(body => {
-        this.post = body;
+        this.post = body.reverse();
         this._series.isLoading = false;
         console.log(this._series.isLoading)
       })
@@ -145,6 +146,7 @@ export class CollectionComponent implements OnChanges, OnInit {
 
 
   fetchInitData() {
+    this.slug = null;
     let tagparams = new URLSearchParams('categories=63&per_page=100&_embed');
     let tagoptions: RequestOptionsArgs = {
       url: null,
@@ -160,10 +162,11 @@ export class CollectionComponent implements OnChanges, OnInit {
     this.wpApiPosts.getList(tagoptions).toPromise()
       .then(response => response.json())
       .then(body => {
-        this.post = body.filter((item) => item.content.rendered.length > 0);
+        this.post = body.filter((item) => item.content.rendered.length > 0).reverse();
         let current = this.post[0];
         this.current = current._embedded['wp:term'][1][0].slug;
-        this._series.current = this.current;
+        this._series.hcurrent = this.current;
+        this.slug = this.current;
 
       })
 
@@ -179,7 +182,7 @@ export class CollectionComponent implements OnChanges, OnInit {
     const taxonomy = "tags";
     let tagId: any;
 
-    let taxparams = new URLSearchParams('slug=' + this.slug);
+    let taxparams = new URLSearchParams('slug=' + this.slug + '&per_page=30');
 
     let taxoptions: RequestOptionsArgs = {
       url: null,
@@ -197,7 +200,7 @@ export class CollectionComponent implements OnChanges, OnInit {
           tagId = tag.id;
 
         }
-        let urlparams = new URLSearchParams('tags=' + tagId + '&_embed');
+        let urlparams = new URLSearchParams('tags=' + tagId + '&per_page=30&_embed');
         let options: RequestOptionsArgs = {
           url: null,
           method: null,
@@ -220,11 +223,7 @@ export class CollectionComponent implements OnChanges, OnInit {
   }
 
   ngOnInit() {
-    if (!this.slug) {
-      this.fetchInitData();
-
-
-    }
+    
 
   }
 

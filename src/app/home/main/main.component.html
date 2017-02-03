@@ -117,7 +117,7 @@
                     </div>
                     <div class="grouping" id="home-resources">
                         <div class="card--resource" data-position="" *ngFor="let post of requests">
-                            <a class="card__inner" [routerLink]="[post._embedded['wp:term'][0][0].slug, post.slug]">
+                            <a class="card__inner" [routerLink]="[post._embedded['wp:term'][0][0].slug,post._embedded['wp:term'][1][0].slug, post.slug]">
                                 <div class="card--resource__labels">
                                     <div class="card--resource__labels__label">{{post._embedded['wp:term'][0][0].name}}</div>
                                 </div>
@@ -139,7 +139,7 @@
                                         </div>
                                         {{post._embedded.author[0].name}}
                                     </div>
-                                    <div class="share share--card js-share-values" data-link="http://www.desiringgod.org/articles/makeup-is-a-hobby-not-a-necessity"
+                                    <div class="share share--card js-share-values" data-link=""
                                          data-title="Makeup Is a Hobby, Not a Necessity">
                                         <div class="share__button">
                                             <div class="svg">

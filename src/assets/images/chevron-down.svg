@@ -1,0 +1,8 @@
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <title>Chevron Down</title>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g sketch:type="MSArtboardGroup" fill="#333333">
+            <path d="M10.5498038,12.5412754 L15.6689948,7.17892015 C15.9120576,6.94002227 16.3057465,6.94040987 16.5483238,7.17978589 C16.790901,7.41916191 16.7905074,7.80687951 16.5474447,8.04577739 L10.9288946,13.5680544 L10.4896439,13.9997786 L10.0504189,13.5680289 L4.43252898,8.04575198 C4.1894805,7.80684003 4.18911006,7.41912241 4.43170157,7.17976043 C4.67429309,6.94039844 5.06798209,6.94003362 5.31103057,7.17894557 L10.5498038,12.5412754 L10.5498038,12.5412754 Z" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

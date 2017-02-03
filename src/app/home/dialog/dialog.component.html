@@ -1,0 +1,39 @@
+<div class="filter-dialog">
+    <md-toolbar layout="row" layout-align="start center" class="filter-dialog-toolbar">
+        <a  (click)="cancelDialog()" class="filter-dialog-menu-button-wrapper">
+            <md-icon class="filter-dialog-menu-button flip-rtl" svgIcon="arrow-back">
+            </md-icon>
+        </a>
+        <div class="filter-dialog-title">
+            <span *ngIf="!filteringSeries && !coming">Select</span>
+            <span *ngIf="filteringSeries">Select series</span>
+            <span *ngIf="coming">Upcoming series</span>
+        </div>
+    </md-toolbar>
+    <md-dialog-content class="filter-dialog-content">
+        <md-list  *ngIf="!filteringSeries && !coming">
+            <md-list-item (click)="fetchPost()" class="filter-dialog-menu-item">
+                <div class="filter-dialog-menu-item-title">Select series</div>
+                <div *ngIf="currentSeries" class="filter-dialog-menu-item-selection">{{currentSeries._embedded['wp:term'][1][0].name}}</div>
+            </md-list-item>
+            <md-list-item (click)="fetchComing()" class="filter-dialog-menu-item">
+                <div class="filter-dialog-menu-item-title">Upcoming series</div>
+                <div *ngIf="currentComing" class="filter-dialog-menu-item-selection">{{currentComing._embedded['wp:term'][1][0].name}}</div>
+            </md-list-item>
+        </md-list>
+        <md-list *ngIf="filteringSeries">
+            <md-list-item (click)="loadSeries(tag)" *ngFor="let tag of list">
+                <div class="filter-dialog-menu-option" [ngClass]="{'filter-dialog-selected': tag.slug === selected.slug}">
+                    {{tag._embedded['wp:term'][1][0].name}}
+                </div>
+            </md-list-item>
+        </md-list>
+        <md-list *ngIf="coming">
+            <md-list-item  *ngFor="let post of upcoming">
+                <div class="filter-dialog-menu-option">
+                    {{post._embedded['wp:term'][1][0].name}}
+                </div>
+            </md-list-item>
+        </md-list>
+    </md-dialog-content>
+</div>

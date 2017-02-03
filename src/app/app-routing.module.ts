@@ -18,6 +18,10 @@ import { engageRoutes } from './engage/engage.routes';
 import { changePasswordRoutes } from './users/change-password/change-password.routes';
 import { logOutRoutes } from './users/log-out/logout.routes';
 import { accountRoutes } from './users/account/account.routes';
+import { healthRoutes } from './blog/health/health.routes';
+import {AboutUsComponent } from './about-us/about-us.component';
+import {NeedsComponent } from './needs/needs.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 const routes: Routes = [
@@ -45,6 +49,22 @@ const routes: Routes = [
     component: HealthComponent
 
   },
+  {
+    path: 'about-us',
+    component: AboutUsComponent
+
+  },
+
+  {
+    path: 'contact',
+    component: ContactComponent
+  },
+  {
+    path: 'needs',
+    component: NeedsComponent
+
+  },
+  
 
   ...articleRoutes,
   ...devotionRoutes,
@@ -56,7 +76,8 @@ const routes: Routes = [
   ...newPasswordRoutes,
   ...changePasswordRoutes,
   ...logOutRoutes,
-  ...accountRoutes
+  ...accountRoutes,
+  ...healthRoutes
 
 
 ];

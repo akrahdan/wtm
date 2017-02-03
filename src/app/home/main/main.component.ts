@@ -1,5 +1,6 @@
 import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
 import { SeriesService } from '../../services/series/series.service';
+import { ContentService } from '../../services/content/content.service';
 
 import { URLSearchParams, RequestOptionsArgs, Headers } from '@angular/http';
 
@@ -12,14 +13,16 @@ import { WpApiPosts } from '../../services/wp-api-angular';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, OnDestroy {
   private recent:any;
   requests = [];
   heroe = [];
   articleData: boolean = false;
 
   constructor(
-    private wpApiPosts: WpApiPosts, private hero: WpApiPosts, private _series: SeriesService) {
+    private wpApiPosts: WpApiPosts, private hero: WpApiPosts, private _series: SeriesService, private content: ContentService) {
+    this.content.home = true;
+    this.content.isExplore = false;
     this.fetchPost();
   }
 
@@ -96,6 +99,8 @@ export class MainComponent implements OnInit {
   ngOnDestroy() {
     this.requests = [];
     this.heroe = [];
+    this.content.home = false;
+    this.content.isExplore = true;
   }
 
 }

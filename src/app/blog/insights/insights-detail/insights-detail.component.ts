@@ -37,7 +37,7 @@ export class InsightsDetailComponent implements OnInit, OnDestroy {
           }
         }
 
-       
+
 
 
       })
@@ -63,32 +63,6 @@ export class InsightsDetailComponent implements OnInit, OnDestroy {
 
       }
 
-      this._tags.getList(taxonomy, taxoptions).toPromise()
-        .then(response => response.json())
-        .then(body => {
-          for (let tag of body) {
-            tagId = tag.id;
-
-          }
-          let urlparams = new URLSearchParams('tags=' + tagId + '&_embed');
-          let options: RequestOptionsArgs = {
-            url: null,
-            method: null,
-            search: urlparams,
-            body: null,
-            withCredentials: false
-
-          }
-
-         if(tagId){
-           this.fetchTag(options);
-         }
-
-        })
-
-
-
-
 
       let tagparams = new URLSearchParams('categories=57&per_page=75&_embed');
       let tagoptions: RequestOptionsArgs = {
@@ -106,9 +80,10 @@ export class InsightsDetailComponent implements OnInit, OnDestroy {
       this.wpApiPosts.getList(tagoptions).toPromise()
         .then(response => response.json())
         .then(body => {
-          this.posts = body.filter((item) => item.content.rendered.length > 0);
+          this.posts = body.filter((item) => item.content.rendered.length > 0).reverse();
 
-
+          let current = this.posts[0];
+          this.current = current._embedded['wp:term'][1][0].slug;
           for (let item of this.posts) {
             let slug = item._embedded['wp:term'][1][0].slug;
 

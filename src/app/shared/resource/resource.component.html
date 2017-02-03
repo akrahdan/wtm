@@ -2,7 +2,7 @@
         <div class="more-resources grid-container">
             <h2 class="grouping__title">More Resources</h2>
             <div *ngFor="let post of resource" class="card--resource" data-position="">
-                <a class="card__inner"[routerLink]="[post._embedded['wp:term'][0][0].slug, post.slug]">
+                <a class="card__inner"[routerLink]="['/' + post._embedded['wp:term'][0][0].slug, post._embedded['wp:term'][1][0].slug, post.slug]">
                     <div class="card--resource__labels">
                         <div class="card--resource__labels__label">{{post._embedded['wp:term'][0][0].name}}</div>
                     </div>

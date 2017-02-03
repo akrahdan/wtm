@@ -1,117 +1,71 @@
-<div class="generic-container-wrapper ng-scope" id="featured-stories-container">
+<div class="widget-container-wrapper layout-wrap layout-row">
+    <div flex="100" class="widget-container ng-scope flex-100">
+        <div class="widget-template">
+            <div class="fe-top-news fe-atoms-generic-container">
 
-    <div class="generic-container ng-scope">
-        <div class="generic-header-container generic-separator">
-            <div class="generic-title featured-stories-header opacity-anim layout-row" layout="row">
-                Insights From God's Word
-            </div>
-        </div>
+                <div class="generic-header-container generic-separator">
+                    <div class="generic-title featured-stories-header opacity-anim layout-row" layout="row">
+                        Insights From God's Word
+                    </div>
+                </div>
+                <div class="fe-atoms-generic-content-container">
 
-        <div class="featured-stories carousel ng-isolate-scope layout-row is-touch" tracking-name="Featured Stories" layout="row">
-
-            <button [hidden]="!mouseIn" class="carousel-prev" aria-label="Prev" tabindex="-1" (click)="navigate(-1)" *ngIf="currentItemOffset > 0">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-                    <path d="M0 0h24v24H0z" fill="none" />
-                </svg>
-            </button>
-            <div #carousel class="carousel-wrapper">
-                <app-loader *ngIf="_series.isLoading"></app-loader>
-                <div #itemlist class="carousel-items" [ngStyle]="{ 'transform' : 'translate(' + xTransform + 'px, 0px)' , '-webkit-transform' : 'translate(' + xTransform + 'px, 0px)' }">
-                    <div *ngFor="let study of post" class="featured-story-container ng-scope ng-isolate-scope" style="direction: initial;">
-                        
-                        <a [routerLink]="['/series', slug, study.slug]" class="featured-story">
-                            <div *ngIf="_client.isMobileMode">
-                                <div class="featured-story-title-container">
-                                    <div class="featured-story-title-text ng-isolate-scope">
-                                        <span class="ng-binding" [innerHtml]="study.title.rendered">
-
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="featured-story-mobile-link">
-                                    <md-icon svgIcon="arrow-next" class="featured-story-mobile-arrow flip-rtl">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fit="" preserveAspectRatio="xMidYMid meet"
-                                             focusable="false">
-                                            <path d="M0 0h24v24h-24z" fill="none"></path>
-                                            <path d="M12 4l-1.41 1.41 5.58 5.59h-12.17v2h12.17l-5.58 5.59 1.41 1.41 8-8z"></path>
-                                        </svg>
-                                    </md-icon>
-                                    Explore story
-                                </div>
-                            </div>
-                            <md-card *ngIf="_client.isDesktopMode">
-                              <md-card-header>
-                                  <div class="card__author">
-                                        <div class="card__author-image">
-                                            <img [src]="study._embedded.author[0].avatar_urls['24']" [alt]="study._embedded.author[0].name">
+                    <button [hidden]="!mouseIn" class="carousel-prev" aria-label="Prev" tabindex="-1" (click)="navigate(-1)" *ngIf="currentItemOffset > 0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                            <path d="M0 0h24v24H0z" fill="none" />
+                        </svg>
+                    </button>
+                    <div #carousel class="carousel-wrapper">
+                        <app-loader *ngIf="_series.isLoading"></app-loader>
+                        <div #itemlist class="carousel-items" [ngStyle]="{ 'transform' : 'translate(' + xTransform + 'px, 0px)' , '-webkit-transform' : 'translate(' + xTransform + 'px, 0px)' }">
+                            <div *ngFor="let study of post" class="article-container ng-scope">
+                                <a class="article article-item" [routerLink]="['/series', slug, study.slug]" target="_blank">
+                                    <div class="article-content">
+                                        <div class="article-title ng-isolate-scope" [title]="study.title.rendered"
+                                            dir="ltr">
+                                            <span ng-bind="bidiText" class="ng-binding" [innerHtml]="study.title.rendered"></span>
                                         </div>
-                                       
-                                        <span>
-                                          {{study._embedded.author[0].name}}
-                                        </span>
-                                        
+                                        <div class="article-source-time fe-atoms-generic-hide-in-mobile">
+                                            <div class="article-source ng-isolate-scope" dir="ltr">
+                                                <span ng-bind="bidiText" class="ng-binding"></span>
+                                            </div>
+                                            <div class="article-time ng-binding">{{study.date | date }}</div>
+                                        </div>
+                                        <div class="article-source-time fe-atoms-generic-hide-in-desktop">
+                                            <div bidi="item.value.source" class="ng-isolate-scope" dir="ltr">
+                                                <span class="ng-binding"></span>
+                                            </div>
+                                            <div class="ng-binding">{{study.date | date }}</div>
+                                        </div>
                                     </div>
-                                  <md-card-title>
-                                      <div class="featured-story-title-container">
 
-                                          <div class="featured-story-title-text ng-isolate-scope">
-                                              <h2 class="card--resource__title" [innerHtml]="study.title.rendered"></h2>
-                                            
+                                    <div class="article-media">
 
-                             
-                                          </div>
-                                      </div>
+                                        <div class="article-image-source ng-scope ng-isolate-scope" dir="ltr">
+                                            <span class="ng-binding"></span>
+                                        </div>
+                                        <img class="article-image ng-scope" [alt]="study.title.rendered" [src]="study.better_featured_image.source_url">
+                                    </div>
+                                </a>
+                            </div>
 
-                                  </md-card-title>
+                        </div>
 
-                              </md-card-header>
-                             <md-card-content>
 
-                                 <div class="featured-story-mobile-link">
-                                     <md-icon svgIcon="arrow-next" class="featured-story-mobile-arrow flip-rtl">
-                                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fit="" preserveAspectRatio="xMidYMid meet"
-                                              focusable="false">
-                                             <path d="M0 0h24v24h-24z" fill="none"></path>
-                                             <path d="M12 4l-1.41 1.41 5.58 5.59h-12.17v2h12.17l-5.58 5.59 1.41 1.41 8-8z"></path>
-                                         </svg>
-                                     </md-icon>
-                                     Explore story
-                                 </div>
-                                 <div class="widget fe_featured" >
-
-                                     <div class="fe_featured">
-                                         <div class="widget-template">
-                                             <div class="fe-featured-atoms-generic-container">
-
-                                                 <div class="fe-featured-atoms-generic-container-title ng-binding">
-                                                     
-                                                 </div>
-                                             </div>
-                                         </div>
-
-                                     </div>
-
-                                 </div>
-                             </md-card-content>
-                            </md-card>
-                           
-                            
-
-                        </a>
                     </div>
 
-
+                    <button [hidden]="!mouseIn" class="carousel-next" aria-label="Next" tabindex="-1" (click)="navigate(1)" *ngIf="currentItemOffset < itemsCount - 1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+                            <path d="M0 0h24v24H0z" fill="none" />
+                        </svg>
+                    </button>
                 </div>
             </div>
 
-            <button [hidden]="!mouseIn" class="carousel-next" aria-label="Next" tabindex="-1" (click)="navigate(1)" *ngIf="currentItemOffset < itemsCount - 1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-                    <path d="M0 0h24v24H0z" fill="none" />
-                </svg>
-            </button>
         </div>
-    </div>
 
+
+    </div>
 </div>
